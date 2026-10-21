@@ -56,7 +56,7 @@ enum DreameHubMain {
         }
         let app = NSApplication.shared
         let menu = NSMenu(), appMenu = NSMenu(), item = NSMenuItem()
-        appMenu.addItem(withTitle:"Çık",action:#selector(NSApplication.terminate(_:)),keyEquivalent:"q")
+        appMenu.addItem(withTitle:L10n.t("Çık"),action:#selector(NSApplication.terminate(_:)),keyEquivalent:"q")
         item.submenu = appMenu; menu.addItem(item); app.mainMenu = menu
         let delegate = AppDelegate()
         app.delegate = delegate
@@ -89,9 +89,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, WKSc
         statusItem.button?.target = self; statusItem.button?.action = #selector(toggle)
         statusItem.button?.sendAction(on:[.leftMouseUp,.rightMouseUp])
         let config = WKWebViewConfiguration()
-        let savedTheme = UserDefaults.standard.string(forKey:"dreameTheme") ?? "system"
-        let themeJSON = String(data:try! JSONSerialization.data(withJSONObject:[savedTheme]),encoding:.utf8)!
-        config.userContentController.addUserScript(WKUserScript(source:"window.dreameSavedTheme = \(themeJSON)[0];",injectionTime:.atDocumentStart,forMainFrameOnly:true))
+        installPreferenceScripts(config.userContentController)
         config.userContentController.addScriptMessageHandler(self,contentWorld:.page,name:"dreameAPI")
         config.userContentController.add(self,name:"dreameNative")
         scheme = AppScheme(api:api)
@@ -114,12 +112,19 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, WKSc
             DispatchQueue.main.async { self.verifyPanelLifecycle() }
         }
     }
+    /// Saved preferences reach the page before its scripts run; rebuilt after each change so reloads see it.
+    private func installPreferenceScripts(_ controller:WKUserContentController) {
+        let preferences:[Any] = [UserDefaults.standard.string(forKey:"dreameTheme") ?? "system",UserDefaults.standard.string(forKey:"dreameLanguage") ?? NSNull(),Locale.preferredLanguages]
+        let json = String(data:try! JSONSerialization.data(withJSONObject:preferences),encoding:.utf8)!
+        controller.removeAllUserScripts()
+        controller.addUserScript(WKUserScript(source:"[window.dreameSavedTheme,window.dreameSavedLanguage,window.dreameSystemLanguages] = \(json);",injectionTime:.atDocumentStart,forMainFrameOnly:true))
+    }
     @objc private func toggle() {
         if NSApp.currentEvent?.type == .rightMouseUp {
             let menu = NSMenu()
-            let open = menu.addItem(withTitle:"Pencerede aç",action:#selector(showWindow),keyEquivalent:""); open.target = self
+            let open = menu.addItem(withTitle:L10n.t("Pencerede aç"),action:#selector(showWindow),keyEquivalent:""); open.target = self
             menu.addItem(.separator())
-            menu.addItem(withTitle:"Dreame Hub Swift'ten çık",action:#selector(NSApplication.terminate(_:)),keyEquivalent:"q")
+            menu.addItem(withTitle:L10n.t("Dreame Hub Swift'ten çık"),action:#selector(NSApplication.terminate(_:)),keyEquivalent:"q")
             statusItem.menu = menu; statusItem.button?.performClick(nil); statusItem.menu = nil
             return
         }
@@ -149,7 +154,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, WKSc
         popover.performClose(nil)
         if window == nil {
             let win = NSWindow(contentRect:NSRect(x:0,y:0,width:900,height:690),styleMask:[.titled,.closable,.miniaturizable,.resizable,.fullSizeContentView],backing:.buffered,defer:false)
-            win.title = "Dreame Hub Swift — doğrulama sürümü"; win.titleVisibility = .hidden; win.titlebarAppearsTransparent = true
+            win.title = L10n.t("Dreame Hub Swift — doğrulama sürümü"); win.titleVisibility = .hidden; win.titlebarAppearsTransparent = true
             win.backgroundColor = .clear; win.isOpaque = false; win.isReleasedWhenClosed = false
             win.minSize = NSSize(width:700,height:520)
             win.contentView = material; material.frame = win.contentView!.bounds; material.autoresizingMask = [.width,.height]
@@ -168,8 +173,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, WKSc
     }
     func userContentController(_ userContentController:WKUserContentController,didReceive message:WKScriptMessage) {
         guard message.frameInfo.isMainFrame, message.frameInfo.securityOrigin.protocol == "dreamehub",
-              let body = message.body as? [String:Any],body["action"] as? String == "theme" else { return }
-        if let theme = body["theme"] as? String,["system","light","dark","liquid"].contains(theme) { UserDefaults.standard.set(theme,forKey:"dreameTheme") }
+              let body = message.body as? [String:Any] else { return }
+        if body["action"] as? String == "language" {
+            guard let language = body["language"] as? String,(["auto"] + L10n.supported).contains(language) else { return }
+            UserDefaults.standard.set(language,forKey:"dreameLanguage")
+            installPreferenceScripts(webView.configuration.userContentController); webView.reload()
+            return
+        }
+        guard body["action"] as? String == "theme" else { return }
+        if let theme = body["theme"] as? String,["system","light","dark","liquid"].contains(theme) {
+            UserDefaults.standard.set(theme,forKey:"dreameTheme"); installPreferenceScripts(webView.configuration.userContentController)
+        }
         switch body["theme"] as? String {
         case "light": material.appearance = NSAppearance(named:.aqua)
         case "dark": material.appearance = NSAppearance(named:.darkAqua)
@@ -201,7 +215,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, WKSc
         if terminationApproved { return .terminateNow }
         Task {
             do { try await api.shutdown(); terminationApproved = true; NSApp.reply(toApplicationShouldTerminate:true) }
-            catch { let alert = NSAlert(); alert.messageText = "Robot işlemi henüz kapatılamadı"; alert.informativeText = error.localizedDescription; alert.runModal(); NSApp.reply(toApplicationShouldTerminate:false) }
+            catch { let alert = NSAlert(); alert.messageText = L10n.t("Robot işlemi henüz kapatılamadı"); alert.informativeText = L10n.t(error.localizedDescription); alert.runModal(); NSApp.reply(toApplicationShouldTerminate:false) }
         }
         return .terminateLater
     }

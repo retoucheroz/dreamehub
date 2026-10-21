@@ -2,7 +2,7 @@
 
 ### Your Dreame. At home on your Mac.
 
-[Türkçe](README.tr.md) · English
+[Türkçe](README.tr.md) · English · [Italiano](README.it.md) · [Svenska](README.sv.md)
 
 [![Download for macOS](https://img.shields.io/badge/Download_for_macOS-Apple_Silicon-3478F6?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/retoucheroz/dreamehub/releases/download/v0.2.3/Dreame-Hub-Swift-0.2.3-preview-arm64.dmg)
 

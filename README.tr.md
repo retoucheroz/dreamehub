@@ -2,7 +2,7 @@
 
 ### Dreame’in, artık Mac’inde.
 
-Türkçe · [English](README.md)
+Türkçe · [English](README.md) · [Italiano](README.it.md) · [Svenska](README.sv.md)
 
 [![macOS için indir](https://img.shields.io/badge/macOS_i%C3%A7in_indir-Apple_Silicon-3478F6?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/retoucheroz/dreamehub/releases/download/v0.2.3/Dreame-Hub-Swift-0.2.3-preview-arm64.dmg)
 
