@@ -46,6 +46,8 @@ The product film uses the actual interface and recorded map. Robot motion is sim
 
 Requires an Apple Silicon Mac, macOS 13 or later and a Dreame Home or MOVA Home account. Sign in, select your robot and open Dreame Hub from its menu-bar icon. Saved credentials, including the selected provider, stay in macOS Keychain. Existing saved Dreame accounts remain compatible.
 
+**Language:** the interface is available in Turkish and English. By default it follows your macOS language (Turkish if Turkish is first in your preferred languages, otherwise English); change it under Preferences → System / Türkçe / English.
+
 For a source build, install a compatible Swift toolchain and run:
 
 ```sh

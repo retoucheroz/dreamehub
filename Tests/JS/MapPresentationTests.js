@@ -12,6 +12,8 @@ const functionLine = name => {
 };
 const draw = js.slice(js.indexOf('function drawMap(m){'), js.indexOf('\nasync function loadHistory'));
 const helpers = ['mapPoint', 'mapCellY', 'getRobotPose', 'targetDistance', 'mapCellSnapshot'].map(functionLine).join('\n');
+// The shipped translation layer (Turkish source text, no table loaded) so labels stay the Turkish keys.
+const i18n = js.match(/^const LANG=[^\n]*$/m)[0] + '\n' + functionLine('t');
 
 function render(rawAngle, mode = '2d', width = 720, height = 500) {
   const strokes = [], labels = [], coordinates = [];
@@ -48,7 +50,7 @@ function render(rawAngle, mode = '2d', width = 720, height = 500) {
     Math, Number, Map, Date, console
   };
   vm.createContext(sandbox);
-  vm.runInContext(helpers + '\n' + draw, sandbox);
+  vm.runInContext(i18n + '\n' + helpers + '\n' + draw, sandbox);
   const fixture = {
     size: [0, 0, 3000, 3000, 60, 60, 50], data: { 1: [0, 0, 60, 0, 59, 60] },
     robot_position: [1500, 1500, rawAngle], charger_position: [1000, 1000, rawAngle],

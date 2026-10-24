@@ -34,10 +34,10 @@ public actor MapService {
         case noMap, unknownModel, signedURL, invalidText
         public var errorDescription: String? {
             switch self {
-            case .noMap: return "Hesaptan tam harita verisi alınamadı."
-            case .unknownModel: return "Bu model için harita şifreleme bilgisi doğrulanmadı."
-            case .signedURL: return "Harita indirme adresi alınamadı."
-            case .invalidText: return "Harita dosyası beklenen metin biçiminde değil."
+            case .noMap: return Localization.text("Hesaptan tam harita verisi alınamadı.")
+            case .unknownModel: return Localization.text("Bu model için harita şifreleme bilgisi doğrulanmadı.")
+            case .signedURL: return Localization.text("Harita indirme adresi alınamadı.")
+            case .invalidText: return Localization.text("Harita dosyası beklenen metin biçiminde değil.")
             }
         }
     }
@@ -191,7 +191,7 @@ public actor MapService {
                         var next=try stream.acceptInflated(inflated,version:streamVersion)
                         next["acquisition_source"]="cloud_property_history";lastPayload=next
                     } catch MapDecoder.Failure.incrementalFrame {
-                        warning="Harita kare zinciri eksik; son doğrulanmış kare gösteriliyor."
+                        warning=Localization.text("Harita kare zinciri eksik; son doğrulanmış kare gösteriliyor.")
                         break
                     }
                 }

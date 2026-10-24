@@ -46,6 +46,8 @@ Tanıtımda gerçek arayüz ve kayıtlı harita kullanılır. Robot hareketi çe
 
 Apple Silicon Mac, macOS 13 veya üzeri ve Dreame Home ya da MOVA Home hesabı gerekir. Giriş yap, robotunu seç ve menü çubuğu ikonundan Dreame Hub’ı aç. Seçilen sağlayıcı dahil hesap bilgileri macOS Anahtar Zinciri’nde kalır. Önceden kaydedilmiş Dreame hesaplarıyla uyumluluk korunur.
 
+**Dil:** arayüz Türkçe ve İngilizce olarak kullanılabilir. Varsayılan olarak macOS dilini izler (tercih edilen dillerde ilk sırada Türkçe varsa Türkçe, değilse İngilizce); Tercihler → Sistem / Türkçe / English ile değiştirilebilir.
+
 Kaynaktan derlemek için uyumlu Swift araçlarını kur ve çalıştır:
 
 ```sh

@@ -1,0 +1,1288 @@
+{
+  "0": {
+    "name": "Startup melody",
+    "transcript": "[Startup melody]",
+    "confidence": "verified"
+  },
+  "1": {
+    "name": "Waiting for network configuration",
+    "transcript": "Waiting for network configuration.",
+    "confidence": "verified"
+  },
+  "2": {
+    "name": "Cannot connect to Wi-Fi network",
+    "transcript": "Cannot connect to the Wi-Fi network. Please check the Wi-Fi password and try again later.",
+    "confidence": "verified"
+  },
+  "3": {
+    "name": "Cannot connect to server",
+    "transcript": "Cannot connect to the server. Please check your local network and try again later.",
+    "confidence": "verified"
+  },
+  "4": {
+    "name": "Robot exited network configuration mode",
+    "transcript": "The vacuum has exited network configuration mode.",
+    "confidence": "verified"
+  },
+  "5": {
+    "name": "Network connected successfully",
+    "transcript": "Network connected successfully.",
+    "confidence": "verified"
+  },
+  "6": {
+    "name": "Network connection failed",
+    "transcript": "Network connection failed. Please try again later.",
+    "confidence": "verified"
+  },
+  "7": {
+    "name": "Start cleaning",
+    "transcript": "Start cleaning.",
+    "confidence": "verified"
+  },
+  "8": {
+    "name": "Start spot cleaning",
+    "transcript": "Start spot cleaning.",
+    "confidence": "verified"
+  },
+  "9": {
+    "name": "Start scheduled cleaning",
+    "transcript": "Start scheduled cleaning.",
+    "confidence": "verified"
+  },
+  "10": {
+    "name": "Resume cleaning",
+    "transcript": "Resuming cleaning.",
+    "confidence": "verified"
+  },
+  "11": {
+    "name": "Paused",
+    "transcript": "Paused.",
+    "confidence": "verified"
+  },
+  "12": {
+    "name": "Cleaning task complete",
+    "transcript": "Cleaning task complete.",
+    "confidence": "verified"
+  },
+  "13": {
+    "name": "Returning to base to charge",
+    "transcript": "Returning to the dock to charge.",
+    "confidence": "verified"
+  },
+  "14": {
+    "name": "Low battery: charge and resume",
+    "transcript": "Low battery, returning to the dock to charge. The vacuum will resume once charged.",
+    "confidence": "verified"
+  },
+  "17": {
+    "name": "Please move the robot to the base to charge",
+    "transcript": "Please take the vacuum to the charging base to charge.",
+    "confidence": "verified"
+  },
+  "18": {
+    "name": "Charging",
+    "transcript": "Charging.",
+    "confidence": "verified"
+  },
+  "19": {
+    "name": "Please remove the robot from the base before switching off",
+    "transcript": "Please remove the vacuum from the dock before switching it off.",
+    "confidence": "verified"
+  },
+  "20": {
+    "name": "Low battery",
+    "transcript": "Low battery",
+    "confidence": "verified"
+  },
+  "21": {
+    "name": "Low battery: robot will switch off",
+    "transcript": "Low battery, the vacuum will switch off.",
+    "confidence": "verified"
+  },
+  "25": {
+    "name": "Low battery: cannot run scheduled task",
+    "transcript": "Low battery, scheduled cleaning cannot be carried out.",
+    "confidence": "verified"
+  },
+  "26": {
+    "name": "Restoring factory settings",
+    "transcript": "Restoring factory settings",
+    "confidence": "verified"
+  },
+  "27": {
+    "name": "Updating",
+    "transcript": "Updating. This takes about 5 minutes. Do not switch off or start a cleaning task.",
+    "confidence": "verified"
+  },
+  "28": {
+    "name": "Updated successfully",
+    "transcript": "Updated successfully.",
+    "confidence": "verified"
+  },
+  "29": {
+    "name": "Update failed, please try again",
+    "transcript": "Update failed. Please try again later.",
+    "confidence": "verified"
+  },
+  "30": {
+    "name": "Positioning, please wait",
+    "transcript": "Positioning. Please wait.",
+    "confidence": "verified"
+  },
+  "31": {
+    "name": "Positioning failed",
+    "transcript": "Positioning failed. The map is invalid. The vacuum will start a new clean.",
+    "confidence": "verified"
+  },
+  "34": {
+    "name": "Dust bin not fitted",
+    "transcript": "Dust bin not fitted. Please fit it.",
+    "confidence": "verified"
+  },
+  "35": {
+    "name": "Main brush error",
+    "transcript": "Main brush error. Please check and clean it.",
+    "confidence": "verified"
+  },
+  "36": {
+    "name": "Side brush error",
+    "transcript": "Side brush error. Please check and clean it.",
+    "confidence": "verified"
+  },
+  "37": {
+    "name": "Right wheel error",
+    "transcript": "Right wheel error. Please check and clean it.",
+    "confidence": "verified"
+  },
+  "38": {
+    "name": "Left wheel error",
+    "transcript": "Left wheel error. Please check and clean it.",
+    "confidence": "verified"
+  },
+  "39": {
+    "name": "Please clean the cliff sensor",
+    "transcript": "The wheels are not touching the floor. Please wipe the cliff sensors, reposition the robot and restart it.",
+    "confidence": "verified"
+  },
+  "40": {
+    "name": "Robot is stuck",
+    "transcript": "The robot is stuck. Please remove the obstacles around it.",
+    "confidence": "verified"
+  },
+  "41": {
+    "name": "Robot wheels suspended",
+    "transcript": "The wheels are not touching the floor. Please reposition the robot and restart it.",
+    "confidence": "verified"
+  },
+  "42": {
+    "name": "Please check and clean the filter",
+    "transcript": "Please check and clean the filter.",
+    "confidence": "verified"
+  },
+  "43": {
+    "name": "Bumper error",
+    "transcript": "Bumper error. Please tap it gently to check whether it springs back.",
+    "confidence": "verified"
+  },
+  "44": {
+    "name": "Error",
+    "transcript": "Error. Please check the user manual or contact customer services.",
+    "confidence": "verified"
+  },
+  "45": {
+    "name": "I'm here",
+    "transcript": "I'm here.",
+    "confidence": "verified"
+  },
+  "46": {
+    "name": "Robot and phone connected",
+    "transcript": "The vacuum and phone are connected. Please return to the app to wait for the result.",
+    "confidence": "verified"
+  },
+  "47": {
+    "name": "Start charging",
+    "transcript": "Start charging.",
+    "confidence": "verified"
+  },
+  "48": {
+    "name": "Low battery: returning to base",
+    "transcript": "Low battery, returning to the charging base.",
+    "confidence": "verified"
+  },
+  "50": {
+    "name": "Charging error",
+    "transcript": "Charging error. Please clean the charging contacts.",
+    "confidence": "verified"
+  },
+  "52": {
+    "name": "Robot tilted",
+    "transcript": "The vacuum is tilted. Please place it on a level floor to restart.",
+    "confidence": "verified"
+  },
+  "54": {
+    "name": "Position found: resuming cleaning",
+    "transcript": "Positioning successful. Resuming cleaning.",
+    "confidence": "verified"
+  },
+  "55": {
+    "name": "Position found: returning to base",
+    "transcript": "Positioning successful. Continuing to return to the dock.",
+    "confidence": "verified"
+  },
+  "56": {
+    "name": "Start selected room cleaning",
+    "transcript": "Start selected room cleaning.",
+    "confidence": "verified"
+  },
+  "57": {
+    "name": "Start zone cleaning",
+    "transcript": "Start zone cleaning.",
+    "confidence": "verified"
+  },
+  "58": {
+    "name": "Resume cleaning task",
+    "transcript": "Resume cleaning task.",
+    "confidence": "verified"
+  },
+  "59": {
+    "name": "Mopping complete",
+    "transcript": "Mopping complete. Please remove the water tank promptly.",
+    "confidence": "verified"
+  },
+  "61": {
+    "name": "Start mopping",
+    "transcript": "Start mopping.",
+    "confidence": "verified"
+  },
+  "62": {
+    "name": "Start remote control cleaning",
+    "transcript": "Start remote control cleaning.",
+    "confidence": "verified"
+  },
+  "64": {
+    "name": "Invalid map: returning to base",
+    "transcript": "Positioning failed. The map is invalid. The vacuum will return to the charging base.",
+    "confidence": "verified"
+  },
+  "65": {
+    "name": "Continue returning to dock",
+    "transcript": "Continuing to return to the dock.",
+    "confidence": "verified"
+  },
+  "66": {
+    "name": "Filter worn",
+    "transcript": "The filter is worn. Please replace it promptly.",
+    "confidence": "verified"
+  },
+  "67": {
+    "name": "Side brush worn",
+    "transcript": "The side brush is worn. Please replace it promptly.",
+    "confidence": "verified"
+  },
+  "68": {
+    "name": "Main brush worn",
+    "transcript": "The main brush is worn. Please replace it promptly.",
+    "confidence": "verified"
+  },
+  "71": {
+    "name": "Laser sensor error",
+    "transcript": "Please check whether the laser distance sensor is jammed.",
+    "confidence": "verified"
+  },
+  "72": {
+    "name": "LDS cover jammed",
+    "transcript": "Please check whether the laser distance sensor cover is jammed.",
+    "confidence": "verified"
+  },
+  "73": {
+    "name": "Edge sensor error",
+    "transcript": "Edge sensor error. Please check and clean it.",
+    "confidence": "verified"
+  },
+  "75": {
+    "name": "Filter may be damp or clogged",
+    "transcript": "The filter may be damp or clogged.",
+    "confidence": "verified"
+  },
+  "77": {
+    "name": "Please start the robot in an area without carpet",
+    "transcript": "Please start the vacuum in an area without carpet.",
+    "confidence": "verified"
+  },
+  "81": {
+    "name": "Ultrasonic sensor error",
+    "transcript": "Carpet sensor error. Please restart the robot or contact customer services.",
+    "confidence": "verified"
+  },
+  "82": {
+    "name": "Start mapping",
+    "transcript": "Start mapping.",
+    "confidence": "verified"
+  },
+  "83": {
+    "name": "Continue mapping",
+    "transcript": "Continue mapping.",
+    "confidence": "verified"
+  },
+  "84": {
+    "name": "Mapping complete",
+    "transcript": "Mapping complete",
+    "confidence": "verified"
+  },
+  "85": {
+    "name": "Position found: continuing mapping",
+    "transcript": "Positioning successful, continuing mapping.",
+    "confidence": "verified"
+  },
+  "86": {
+    "name": "Position not found: restarting mapping",
+    "transcript": "Positioning failed. Restarting mapping.",
+    "confidence": "verified"
+  },
+  "87": {
+    "name": "Low battery: returning to base",
+    "transcript": "Low battery, returning to the charging base.",
+    "confidence": "verified"
+  },
+  "91": {
+    "name": "Clean water tank not fitted",
+    "transcript": "Clean water tank not fitted. Please fit it.",
+    "confidence": "verified"
+  },
+  "93": {
+    "name": "Not enough water in clean water tank",
+    "transcript": "The water level in the clean water tank is low. Please add water.",
+    "confidence": "verified"
+  },
+  "97": {
+    "name": "Dust bag not fitted",
+    "transcript": "Please fit the dust bag.",
+    "confidence": "verified"
+  },
+  "102": {
+    "name": "Dust bag full or air duct blocked",
+    "transcript": "The dust bag is full or the air duct is blocked. Please replace the bag or clean the air duct promptly.",
+    "confidence": "verified"
+  },
+  "105": {
+    "name": "Start cleaning",
+    "transcript": "Start cleaning.",
+    "confidence": "verified"
+  },
+  "106": {
+    "name": "Start cleaning mop",
+    "transcript": "Start cleaning the mop pads.",
+    "confidence": "verified"
+  },
+  "107": {
+    "name": "Start drying mop",
+    "transcript": "Start drying the mop pads.",
+    "confidence": "verified"
+  },
+  "108": {
+    "name": "Washboard water level abnormal",
+    "transcript": "There is a fault with the clean water level. Please clean it promptly.",
+    "confidence": "verified"
+  },
+  "109": {
+    "name": "Dirty water tank fault",
+    "transcript": "Dirty water tank fault. Please make sure it is fitted and empty.",
+    "confidence": "verified"
+  },
+  "110": {
+    "name": "Start auto-empty",
+    "transcript": "Start auto-empty.",
+    "confidence": "verified"
+  },
+  "111": {
+    "name": "Mop pads removed",
+    "transcript": "Mop pads removed. Please fit them before continuing.",
+    "confidence": "verified"
+  },
+  "112": {
+    "name": "Place robot in the washing base",
+    "transcript": "Place the vacuum back on the self-wash base before use.",
+    "confidence": "verified"
+  },
+  "113": {
+    "name": "Task complete",
+    "transcript": "Task complete. Please empty the dirty water tank promptly.",
+    "confidence": "verified"
+  },
+  "114": {
+    "name": "Mops attached",
+    "transcript": "Mop pads attached",
+    "confidence": "verified"
+  },
+  "115": {
+    "name": "Mops removed",
+    "transcript": "Mop pads removed.",
+    "confidence": "verified"
+  },
+  "116": {
+    "name": "Child lock on",
+    "transcript": "Child lock on, buttons locked.",
+    "confidence": "verified"
+  },
+  "117": {
+    "name": "Child lock off",
+    "transcript": "Child lock off. Buttons unlocked.",
+    "confidence": "verified"
+  },
+  "118": {
+    "name": "Buttons locked",
+    "transcript": "Buttons locked. Press and hold the dock button to unlock.",
+    "confidence": "verified"
+  },
+  "126": {
+    "name": "Start cleaning",
+    "transcript": "Start cleaning.",
+    "confidence": "verified"
+  },
+  "127": {
+    "name": "Start spot cleaning",
+    "transcript": "Start spot cleaning.",
+    "confidence": "verified"
+  },
+  "128": {
+    "name": "Start spot mopping",
+    "transcript": "Start spot mopping.",
+    "confidence": "verified"
+  },
+  "129": {
+    "name": "Start scheduled cleaning",
+    "transcript": "Start scheduled cleaning.",
+    "confidence": "verified"
+  },
+  "130": {
+    "name": "Start scheduled mopping",
+    "transcript": "Start scheduled mopping.",
+    "confidence": "verified"
+  },
+  "133": {
+    "name": "Start selected room cleaning",
+    "transcript": "Start selected room cleaning.",
+    "confidence": "verified"
+  },
+  "134": {
+    "name": "Start selected room mopping",
+    "transcript": "Start selected room mopping.",
+    "confidence": "verified"
+  },
+  "135": {
+    "name": "Start zone cleaning",
+    "transcript": "Start zone cleaning.",
+    "confidence": "verified"
+  },
+  "136": {
+    "name": "Start zone mopping",
+    "transcript": "Start zone mopping.",
+    "confidence": "verified"
+  },
+  "137": {
+    "name": "Resume cleaning",
+    "transcript": "Resume cleaning!",
+    "confidence": "verified"
+  },
+  "138": {
+    "name": "Resume mopping",
+    "transcript": "Resume mopping.",
+    "confidence": "verified"
+  },
+  "139": {
+    "name": "Continue returning to base for self-cleaning",
+    "transcript": "Returning.",
+    "confidence": "verified"
+  },
+  "140": {
+    "name": "New environment detected",
+    "transcript": "New environment detected, returning to the self-wash base.",
+    "confidence": "verified"
+  },
+  "142": {
+    "name": "Mop pad worn",
+    "transcript": "The mop pad is worn. Please replace it promptly.",
+    "confidence": "verified"
+  },
+  "143": {
+    "name": "Cleaning complete",
+    "transcript": "Cleaning complete.",
+    "confidence": "verified"
+  },
+  "144": {
+    "name": "Mopping complete",
+    "transcript": "Mopping complete.",
+    "confidence": "verified"
+  },
+  "145": {
+    "name": "Position found: resuming cleaning",
+    "transcript": "Positioning successful. Resuming cleaning.",
+    "confidence": "verified"
+  },
+  "146": {
+    "name": "Position found: resuming mopping",
+    "transcript": "Positioning successful. Resuming mopping.",
+    "confidence": "verified"
+  },
+  "148": {
+    "name": "Return to base for self-cleaning",
+    "transcript": "Return to the base for self-cleaning.",
+    "confidence": "verified"
+  },
+  "149": {
+    "name": "Cannot reach target: obstacle in path",
+    "transcript": "Cannot reach the specified area. Please try clearing obstacles from the path.",
+    "confidence": "verified"
+  },
+  "150": {
+    "name": "Cannot reach target: no-go zone",
+    "transcript": "Cannot reach the specified area. Please try removing the no-go zones on the path.",
+    "confidence": "verified"
+  },
+  "151": {
+    "name": "Path blocked: physical obstacle nearby",
+    "transcript": "Path blocked. Please try clearing obstacles around your vacuum.",
+    "confidence": "verified"
+  },
+  "152": {
+    "name": "Path blocked: no-go zone",
+    "transcript": "Path blocked. Please try removing the no-go zones or move your vacuum out of this area.",
+    "confidence": "verified"
+  },
+  "153": {
+    "name": "Robot detected in a no-go zone",
+    "transcript": "Your vacuum has been detected in a no-go zone. Please move it out of this area.",
+    "confidence": "verified"
+  },
+  "156": {
+    "name": "Mop tray removed",
+    "transcript": "Mop pad tray not fitted.",
+    "confidence": "verified"
+  },
+  "162": {
+    "name": "Camera on",
+    "transcript": "Camera on.",
+    "confidence": "verified"
+  },
+  "163": {
+    "name": "Camera monitoring",
+    "transcript": "CAMERA MONITORING",
+    "confidence": "verified"
+  },
+  "164": {
+    "name": "Task ends",
+    "transcript": "Task ends.",
+    "confidence": "verified"
+  },
+  "166": {
+    "name": "Please remove foreign objects tangled in the mop pad",
+    "transcript": "Please remove any foreign objects tangled in the mop pad.",
+    "confidence": "verified"
+  },
+  "169": {
+    "name": "Mop drying complete",
+    "transcript": "Mop pad drying complete.",
+    "confidence": "verified"
+  },
+  "171": {
+    "name": "AI recognition on",
+    "transcript": "Smart obstacle avoidance on.",
+    "confidence": "verified"
+  },
+  "172": {
+    "name": "AI recognition off",
+    "transcript": "Smart obstacle avoidance off.",
+    "confidence": "verified"
+  },
+  "173": {
+    "name": "Please replace the silver ion steriliser",
+    "transcript": "Please replace the silver ion steriliser.",
+    "confidence": "verified"
+  },
+  "177": {
+    "name": "Leaving the base",
+    "transcript": "Leaving the base station.",
+    "confidence": "verified"
+  },
+  "179": {
+    "name": "Mop cleaned",
+    "transcript": "Mop cleaned. There is not enough water in the clean water tank. Please fill the clean water tank and empty the dirty water tank.",
+    "confidence": "verified"
+  },
+  "181": {
+    "name": "Insufficient water",
+    "transcript": "Insufficient water. Please fill the clean water tank.",
+    "confidence": "verified"
+  },
+  "186": {
+    "name": "Please check the clean water tank",
+    "transcript": "Please check the clean water tank.",
+    "confidence": "verified"
+  },
+  "187": {
+    "name": "This will take about 5 to 10 minutes",
+    "transcript": "This will take about 5 to 10 minutes.",
+    "confidence": "verified"
+  },
+  "188": {
+    "name": "Auto-docking engaged",
+    "transcript": "Auto-docking engaged.",
+    "confidence": "verified"
+  },
+  "200": {
+    "name": "Shutdown melody",
+    "transcript": "[Shutdown melody]",
+    "confidence": "verified"
+  },
+  "244": {
+    "name": "Detergent bottle fitted",
+    "transcript": "Detergent bottle fitted.",
+    "confidence": "verified"
+  },
+  "255": {
+    "name": "Smart obstacle avoidance required",
+    "transcript": "Sorry, this task can only be carried out when smart obstacle avoidance is enabled.",
+    "confidence": "asr"
+  },
+  "257": {
+    "name": "Camera monitoring ended",
+    "transcript": "Camera monitoring ended.",
+    "confidence": "verified"
+  },
+  "258": {
+    "name": "Patrol started",
+    "transcript": "Self-positioned patrol started.",
+    "confidence": "verified"
+  },
+  "259": {
+    "name": "Heading to target location",
+    "transcript": "Self-positioned. Heading to the specified location.",
+    "confidence": "verified"
+  },
+  "260": {
+    "name": "Patrol continuing",
+    "transcript": "Self-positioned patrol resumed.",
+    "confidence": "verified"
+  },
+  "261": {
+    "name": "Continuing to target location",
+    "transcript": "Self-positioned, continuing to the specified location.",
+    "confidence": "verified"
+  },
+  "262": {
+    "name": "Self-positioning failed",
+    "transcript": "Self-positioning failed.",
+    "confidence": "verified"
+  },
+  "266": {
+    "name": "Please replace the detergent",
+    "transcript": "Please replace the detergent.",
+    "confidence": "verified"
+  },
+  "267": {
+    "name": "Please clean the sensors",
+    "transcript": "Please clean the sensors.",
+    "confidence": "verified"
+  },
+  "269": {
+    "name": "Please try again once the current task is complete",
+    "transcript": "Please try again once the current task is complete.",
+    "confidence": "asr"
+  },
+  "274": {
+    "name": "Notification sound",
+    "transcript": "[Notification sound]",
+    "confidence": "verified"
+  },
+  "280": {
+    "name": "Start custom cleaning",
+    "transcript": "Start custom cleaning.",
+    "confidence": "verified"
+  },
+  "281": {
+    "name": "Robot is auto-emptying",
+    "transcript": "The robot vacuum is auto-emptying. Please try again later.",
+    "confidence": "verified"
+  },
+  "282": {
+    "name": "Robot is cleaning the mop pad",
+    "transcript": "The robot vacuum is cleaning the mop pad. Please try again later.",
+    "confidence": "verified"
+  },
+  "283": {
+    "name": "Robot is not on the base",
+    "transcript": "The robot vacuum is not on the base station. Please try again later.",
+    "confidence": "verified"
+  },
+  "293": {
+    "name": "Calling enabled",
+    "transcript": "Calling enabled.",
+    "confidence": "verified"
+  },
+  "294": {
+    "name": "Calling disabled",
+    "transcript": "Calling disabled",
+    "confidence": "verified"
+  },
+  "296": {
+    "name": "Dirty water tank fault",
+    "transcript": "Dirty water tank fault. Please check whether the dirty water tank is full.",
+    "confidence": "asr"
+  },
+  "297": {
+    "name": "Detergent bottle fitted: reset counter",
+    "transcript": "Detergent bottle fitted. If the detergent has not been used, please reset it in the app.",
+    "confidence": "asr"
+  },
+  "298": {
+    "name": "Start cleaning the washboard base",
+    "transcript": "Start cleaning the washboard base",
+    "confidence": "asr"
+  },
+  "299": {
+    "name": "Detergent auto-dosing module fitted",
+    "transcript": "Detergent bottle and auto-dosing module fitted.",
+    "confidence": "asr"
+  },
+  "311": {
+    "name": "Mops removed",
+    "transcript": "Mop pads removed.",
+    "confidence": "asr"
+  },
+  "315": {
+    "name": "Mop pad not in base",
+    "transcript": "The mop pad is not in the base station. Please place it in the base station and try again, or fit it manually.",
+    "confidence": "asr"
+  },
+  "316": {
+    "name": "Mop pad already in base",
+    "transcript": "The mop pad is already in the base station.",
+    "confidence": "asr"
+  },
+  "318": {
+    "name": "Mop pad cleaned",
+    "transcript": "Mop pad cleaned.",
+    "confidence": "asr"
+  },
+  "319": {
+    "name": "Mop pads could not be removed",
+    "transcript": "The mop pads could not be removed. Please remove them manually.",
+    "confidence": "asr"
+  },
+  "320": {
+    "name": "Mop pads could not be fitted",
+    "transcript": "The mop pads could not be fitted. Please fit them manually.",
+    "confidence": "asr"
+  },
+  "321": {
+    "name": "Start intensive stain cleaning",
+    "transcript": "Start intensive mopping for stains.",
+    "confidence": "asr"
+  },
+  "329": {
+    "name": "Self-test started",
+    "transcript": "Starting self-test, please do not move me away from the base station.",
+    "confidence": "asr"
+  },
+  "330": {
+    "name": "Self-test in progress",
+    "transcript": "Please try again once the self-test is complete.",
+    "confidence": "asr"
+  },
+  "331": {
+    "name": "Self-test: no faults",
+    "transcript": "No faults found, you can use this device safely.",
+    "confidence": "asr"
+  },
+  "332": {
+    "name": "Self-test: fault found",
+    "transcript": "A fault was found, please go to the app to view the details.",
+    "confidence": "asr"
+  },
+  "341": {
+    "name": "Found you",
+    "transcript": "Found you, starting to follow now. You can say \"stop following\" to end following.",
+    "confidence": "asr"
+  },
+  "342": {
+    "name": "Where are you",
+    "transcript": "Where are you? Please stand about 1.5 metres in front of me.",
+    "confidence": "asr"
+  },
+  "343": {
+    "name": "I've lost you",
+    "transcript": "I've lost you, you're walking too fast. Please stand about 1.5 metres in front of me and wait for me to find you again.",
+    "confidence": "asr"
+  },
+  "349": {
+    "name": "Make sure the base is switched on",
+    "transcript": "Make sure the base station is switched on. Place the robot on it to start activation.",
+    "confidence": "asr"
+  },
+  "350": {
+    "name": "Start base activation",
+    "transcript": "Start base station activation.",
+    "confidence": "asr"
+  },
+  "351": {
+    "name": "Base activated",
+    "transcript": "Base station activated.",
+    "confidence": "asr"
+  },
+  "352": {
+    "name": "Base station activation failed",
+    "transcript": "Base station activation failed. Open the app to view the solution.",
+    "confidence": "asr"
+  },
+  "355": {
+    "name": "Water level low, please fill the clean water tank",
+    "transcript": "Low water level, please fill the clean water tank.",
+    "confidence": "asr"
+  },
+  "356": {
+    "name": "Fault still present",
+    "transcript": "The fault is still present, the scheduled task has been cancelled.",
+    "confidence": "asr"
+  },
+  "360": {
+    "name": "Robot is draining its water tank",
+    "transcript": "Robot draining water tank",
+    "confidence": "asr"
+  },
+  "361": {
+    "name": "Robot water tank draining complete",
+    "transcript": "Robot water tank draining complete.",
+    "confidence": "asr"
+  },
+  "362": {
+    "name": "Mop not in place: vacuuming only",
+    "transcript": "The mop pad has come off; the robot will carry out a vacuuming task instead.",
+    "confidence": "asr"
+  },
+  "363": {
+    "name": "Vacuuming complete, robot will start mopping",
+    "transcript": "Vacuuming task complete. The robot will start mopping.",
+    "confidence": "asr"
+  },
+  "364": {
+    "name": "Start setting the video activation code",
+    "transcript": "Start setting the video activation code",
+    "confidence": "asr"
+  },
+  "365": {
+    "name": "Live video function disabled",
+    "transcript": "[Unclear recording] Live video function disabled?",
+    "confidence": "asr"
+  },
+  "371": {
+    "name": "Please remove the washboard",
+    "transcript": "Please remove the washboard.",
+    "confidence": "asr"
+  },
+  "372": {
+    "name": "Clean water starts flowing out",
+    "transcript": "Clean water starts flowing",
+    "confidence": "asr"
+  },
+  "373": {
+    "name": "Clean water outflow finished",
+    "transcript": "The clean water flow has finished. Please wait 10 seconds, then clean the base station once the dirt has soaked.",
+    "confidence": "asr"
+  },
+  "374": {
+    "name": "Clean the base tray",
+    "transcript": "Please use a brush or cloth to clean the bottom of the base station within 20 seconds. The waste will then be pumped out automatically.",
+    "confidence": "asr"
+  },
+  "375": {
+    "name": "Please push the dirt towards the pump inlet",
+    "transcript": "Please push the dirt towards the pump inlet; pumping takes 30 seconds.",
+    "confidence": "asr"
+  },
+  "376": {
+    "name": "Pumping complete",
+    "transcript": "Pumping finished. Please clean the washboard separately and refit it.",
+    "confidence": "asr"
+  },
+  "377": {
+    "name": "Network cannot be configured",
+    "transcript": "Network cannot be configured. Please contact customer services.",
+    "confidence": "asr"
+  },
+  "378": {
+    "name": "Wrong Wi-Fi password",
+    "transcript": "Wrong password, cannot connect to the network. Please reconfigure.",
+    "confidence": "asr"
+  },
+  "379": {
+    "name": "Wireless network not found, please connect to 2.4 GHz",
+    "transcript": "Wireless network not found. Please connect to the 2.4 GHz wireless band. Place the robot near the router and try again.",
+    "confidence": "asr"
+  },
+  "380": {
+    "name": "Could not obtain an IP address",
+    "transcript": "Could not obtain an IP address, please check the router settings.",
+    "confidence": "asr"
+  },
+  "381": {
+    "name": "Could not connect to EMQ server",
+    "transcript": "Cannot connect to the EMQ server. Please contact customer services.",
+    "confidence": "asr"
+  },
+  "382": {
+    "name": "Could not connect to network",
+    "transcript": "Cannot connect to the network. Please check whether the network is working normally.",
+    "confidence": "asr"
+  },
+  "383": {
+    "name": "Network cannot be configured",
+    "transcript": "Network cannot be configured. Please contact customer services.",
+    "confidence": "asr"
+  },
+  "384": {
+    "name": "No clean water in automatic water system",
+    "transcript": "There is no water in the clean water tank or drainage unit of the automatic water supply.",
+    "confidence": "asr"
+  },
+  "385": {
+    "name": "Start connecting to network",
+    "transcript": "Start connecting to the network",
+    "confidence": "asr"
+  },
+  "388": {
+    "name": "Robot in a restricted area",
+    "transcript": "Restricted area, please move the robot to a suitable area and try again.",
+    "confidence": "asr"
+  },
+  "389": {
+    "name": "LDS failed to lower",
+    "transcript": "Cannot lower the LDS. Please check whether it is stuck.",
+    "confidence": "asr"
+  },
+  "390": {
+    "name": "LDS could not be raised",
+    "transcript": "Cannot raise the LDS. Please check whether it is stuck.",
+    "confidence": "asr"
+  },
+  "391": {
+    "name": "Place in an open area for the task",
+    "transcript": "Please move me to an open area before starting the task.",
+    "confidence": "asr"
+  },
+  "396": {
+    "name": "Draining water module",
+    "transcript": "Starting to drain the water supply and drainage module, expected to take 3 minutes.",
+    "confidence": "asr"
+  },
+  "397": {
+    "name": "Upper and lower water draining complete",
+    "transcript": "Upper and lower water draining complete.",
+    "confidence": "asr"
+  },
+  "398": {
+    "name": "Mapping complete: take to base",
+    "transcript": "Mapping complete. Check the map in the app and take me to the docking point.",
+    "confidence": "asr"
+  },
+  "399": {
+    "name": "Test complete, please take me back to the base",
+    "transcript": "Task complete. Please take me back to the docking point.",
+    "confidence": "asr"
+  },
+  "400": {
+    "name": "Base cleaning complete",
+    "transcript": "[Unintelligible recording, apparently in another language]",
+    "confidence": "asr"
+  },
+  "401": {
+    "name": "Base for self-cleaning",
+    "transcript": "Please take me to the docking point and start the self-cleaning task.",
+    "confidence": "asr"
+  },
+  "424": {
+    "name": "Positioning failed",
+    "transcript": "Positioning failed, please move me to an open area and restart the task.",
+    "confidence": "asr"
+  },
+  "426": {
+    "name": "I slipped and got stuck",
+    "transcript": "I slipped and got stuck; I'll keep trying to free myself.",
+    "confidence": "asr"
+  },
+  "433": {
+    "name": "Start extra cleaning",
+    "transcript": "Start extra cleaning.",
+    "confidence": "asr"
+  },
+  "434": {
+    "name": "Extra cleaning complete",
+    "transcript": "Extra cleaning complete, resuming the original clean.",
+    "confidence": "asr"
+  },
+  "435": {
+    "name": "Leaving current area",
+    "transcript": "Leaving the current area",
+    "confidence": "asr"
+  },
+  "436": {
+    "name": "Alert sound",
+    "transcript": "[Alert sound]",
+    "confidence": "asr"
+  },
+  "437": {
+    "name": "Problem solved: resume cleaning",
+    "transcript": "Problem solved, tap the start button to resume cleaning.",
+    "confidence": "asr"
+  },
+  "438": {
+    "name": "Bumper jammed",
+    "transcript": "The bumper is jammed. Please tap it gently so it springs back normally.",
+    "confidence": "asr"
+  },
+  "439": {
+    "name": "LDS cover jammed",
+    "transcript": "The LDS cover is jammed. Please tap its flexible area gently so it springs back normally.",
+    "confidence": "asr"
+  },
+  "440": {
+    "name": "Wheels off the ground",
+    "transcript": "The robot vacuum's wheels are suspended. Please move it to an open area and restart the task.",
+    "confidence": "asr"
+  },
+  "441": {
+    "name": "Main brush tangled",
+    "transcript": "Something is tangled in the main brush. Please remove and clean it before refitting.",
+    "confidence": "asr"
+  },
+  "442": {
+    "name": "Side brush tangled",
+    "transcript": "Something is tangled in the side brush. Please remove and clean it before refitting.",
+    "confidence": "asr"
+  },
+  "443": {
+    "name": "Main wheels tangled, please clean",
+    "transcript": "Something is tangled in the main wheels, please clean them.",
+    "confidence": "asr"
+  },
+  "444": {
+    "name": "Place robot in an open area",
+    "transcript": "Please move the robot to an open area before starting the task.",
+    "confidence": "asr"
+  },
+  "445": {
+    "name": "Mop fell off",
+    "transcript": "The mop has fallen off. Please check around the robot, find the mop and refit it.",
+    "confidence": "asr"
+  },
+  "446": {
+    "name": "Mop holder tangled, please remove and clean",
+    "transcript": "Something is tangled in the mop holder, please remove and clean it.",
+    "confidence": "asr"
+  },
+  "447": {
+    "name": "Base power off",
+    "transcript": "The base station is not switched on. Please check it and put the robot back on to charge.",
+    "confidence": "asr"
+  },
+  "448": {
+    "name": "Dirty water tank not fitted",
+    "transcript": "The dirty water tank is not fitted. Please put it in place before starting the task.",
+    "confidence": "asr"
+  },
+  "449": {
+    "name": "Cannot start a task on carpet",
+    "transcript": "Cannot start a task on carpet. Please move the robot to a hard floor and restart the task.",
+    "confidence": "asr"
+  },
+  "450": {
+    "name": "Cannot start a task in a no-go zone",
+    "transcript": "Cannot start a task in a no-go zone. Please move the robot to another area and restart the task.",
+    "confidence": "asr"
+  },
+  "451": {
+    "name": "Cannot start a task in a restricted area",
+    "transcript": "Cannot start tasks in a restricted area. Please move the robot to another area and restart the task.",
+    "confidence": "asr"
+  },
+  "452": {
+    "name": "Carpet sensor error",
+    "transcript": "Carpet sensor error. Please turn the robot over, wipe the white round hole underneath and restart the robot.",
+    "confidence": "asr"
+  },
+  "453": {
+    "name": "Edge sensor error",
+    "transcript": "Edge sensor error. Please wipe the right side of the robot and restart the task.",
+    "confidence": "asr"
+  },
+  "454": {
+    "name": "Not enough clean water",
+    "transcript": "There is not enough water in the clean water tank. Please fill it with clean water promptly.",
+    "confidence": "asr"
+  },
+  "455": {
+    "name": "Clean water tank not in place",
+    "transcript": "The clean water tank is not in place. Please fit it.",
+    "confidence": "asr"
+  },
+  "456": {
+    "name": "Dirty water tank full / not fitted",
+    "transcript": "The dirty water tank is full or not fitted, please check it.",
+    "confidence": "asr"
+  },
+  "457": {
+    "name": "Dirty water tank full / not fitted",
+    "transcript": "The dirty water tank is full or not fitted, please check it.",
+    "confidence": "asr"
+  },
+  "458": {
+    "name": "Dust bag not in place, please check and fit it",
+    "transcript": "The dust bag is not in place, please check and fit it.",
+    "confidence": "asr"
+  },
+  "459": {
+    "name": "Mop holder in wrong position",
+    "transcript": "The mop holder is not in place, please check and fit it.",
+    "confidence": "asr"
+  },
+  "460": {
+    "name": "Deodoriser worn out",
+    "transcript": "The dirty water tank deodoriser is worn out, please replace it promptly.",
+    "confidence": "asr"
+  },
+  "463": {
+    "name": "Welcome to your Dreame robot",
+    "transcript": "Welcome to your Dreame robot vacuum. To see more features, please open the robot vacuum's lid, scan the QR code and download the Dreamehome app.",
+    "confidence": "asr"
+  },
+  "464": {
+    "name": "Place on base before task",
+    "transcript": "To complete subsequent tasks smoothly, place the robot back on the base before starting tasks. Setup is complete when you hear the \"start charging\" prompt.",
+    "confidence": "asr"
+  },
+  "465": {
+    "name": "Place on base before task",
+    "transcript": "Place the robot back on the base before starting tasks. Setup is complete when you hear the \"start charging\" prompt.",
+    "confidence": "asr"
+  },
+  "466": {
+    "name": "Prepare rooms before cleaning",
+    "transcript": "Please open the doors of the rooms to be cleaned and pick up items from the floor.",
+    "confidence": "asr"
+  },
+  "467": {
+    "name": "Place on base before mapping",
+    "transcript": "Please place the robot back on the base, then start mapping again.",
+    "confidence": "asr"
+  },
+  "468": {
+    "name": "Please confirm the map details in the app",
+    "transcript": "Please confirm the map details in the app.",
+    "confidence": "asr"
+  },
+  "478": {
+    "name": "Resume after mop washing",
+    "transcript": "Once mop washing is complete, the robot will resume the cleaning task where it left off.",
+    "confidence": "asr"
+  },
+  "479": {
+    "name": "Restart task",
+    "transcript": "All ready, restart your task.",
+    "confidence": "asr"
+  },
+  "480": {
+    "name": "Add water for the next task",
+    "transcript": "Put enough water in the clean water tank for the next tasks.",
+    "confidence": "asr"
+  },
+  "488": {
+    "name": "Notification sound",
+    "transcript": "[Notification sound]",
+    "confidence": "asr"
+  },
+  "516": {
+    "name": "Start looking for pets",
+    "transcript": "Start looking for pets",
+    "confidence": "asr"
+  },
+  "517": {
+    "name": "Pet found",
+    "transcript": "Successfully found your pet, starting to return to charge.",
+    "confidence": "asr"
+  },
+  "518": {
+    "name": "Pet not found, returning to charge",
+    "transcript": "Pet not found, starting to return to charge.",
+    "confidence": "asr"
+  },
+  "632": {
+    "name": "Changing language",
+    "transcript": "Changing language, this will take about 30 seconds.",
+    "confidence": "asr"
+  },
+  "636": {
+    "name": "Auto-wash dirty mop",
+    "transcript": "The mop is dirty; please take the robot to the docking point for automatic mop washing.",
+    "confidence": "asr"
+  },
+  "638": {
+    "name": "Resuming auto-empty",
+    "transcript": "Restarting auto-empty.",
+    "confidence": "asr"
+  },
+  "639": {
+    "name": "Please fit the washboard filter",
+    "transcript": "Please fit the washboard filter.",
+    "confidence": "asr"
+  },
+  "640": {
+    "name": "Language change failed",
+    "transcript": "Language change failed. Please reset.",
+    "confidence": "asr"
+  },
+  "658": {
+    "name": "Descaler expired",
+    "transcript": "The descaler has expired, please replace it promptly.",
+    "confidence": "asr"
+  },
+  "661": {
+    "name": "Washboard cleaning",
+    "transcript": "Start cleaning the washboard base; this will take about 45 to 60 seconds.",
+    "confidence": "asr"
+  },
+  "662": {
+    "name": "Start producing electrolysed water to clean them",
+    "transcript": "Start preparing electrolysed water to clean the mop.",
+    "confidence": "asr"
+  },
+  "663": {
+    "name": "Abnormal water level detected in washboard",
+    "transcript": "Abnormal water level detected in the washboard. Please clean the washboard filter and filter channel, then restart the task.",
+    "confidence": "asr"
+  },
+  "673": {
+    "name": "Extendable legs tangled",
+    "transcript": "Something may be tangled in the extendable legs. Please clean the legs before starting tasks.",
+    "confidence": "asr"
+  },
+  "677": {
+    "name": "Cannot reach target: threshold / zone",
+    "transcript": "Cannot reach the specified area. Please remove no-go zones or impassable thresholds on the path.",
+    "confidence": "asr"
+  },
+  "678": {
+    "name": "Path blocked: threshold / zone",
+    "transcript": "Cleaning path blocked. Please remove no-go zones or impassable thresholds on the map, or move the robot out of the area.",
+    "confidence": "asr"
+  },
+  "679": {
+    "name": "Robot in a threshold / no-go zone",
+    "transcript": "The robot vacuum is blocked in a no-go zone or an impassable threshold area. Please move it out of the area.",
+    "confidence": "asr"
+  },
+  "681": {
+    "name": "OK, I'll carry on cleaning",
+    "transcript": "OK, I'll carry on cleaning.",
+    "confidence": "asr"
+  }
+}
+

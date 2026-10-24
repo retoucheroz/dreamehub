@@ -51,7 +51,7 @@ public actor GoToController {
             watcher=Task { [weak self] in await self?.watch() }
         } catch {
             // Command delivery may be unknown; attempt stop before restoring settings.
-            do { try await finish(stop:true) } catch { lastError="Hedef işlemi kesildi; durdurma/ayar geri yükleme doğrulanamadı." }
+            do { try await finish(stop:true) } catch { lastError=Localization.text("Hedef işlemi kesildi; durdurma/ayar geri yükleme doğrulanamadı.") }
             throw error
         }
     }
@@ -75,10 +75,10 @@ public actor GoToController {
                 let rows=try await read(op.device,[(2,1),(4,1)])
                 guard !Task.isCancelled, operation?.start == op.start else { return }
                 if let state=DeviceContract.property(rows,2,1) as? Int,[2,4,5,6,13].contains(state),Date().timeIntervalSince(op.start)>8 { try await finish(stop:true); return }
-            } catch { lastError="Hedef izleme verisi alınamadı; güvenli durdurma sınırı izleniyor." }
+            } catch { lastError=Localization.text("Hedef izleme verisi alınamadı; güvenli durdurma sınırı izleniyor.") }
             if Date().timeIntervalSince(lastFresh)>20 || Date().timeIntervalSince(op.start)>300 {
-                do { try await finish(stop:true); lastError="Güncel konum doğrulanamadığı veya süre aşıldığı için hedef hareketi durduruldu." }
-                catch { lastError="Hedef hareketinin durduğu doğrulanamadı; robotu uygulamadan durdur." }
+                do { try await finish(stop:true); lastError=Localization.text("Güncel konum doğrulanamadığı veya süre aşıldığı için hedef hareketi durduruldu.") }
+                catch { lastError=Localization.text("Hedef hareketinin durduğu doğrulanamadı; robotu uygulamadan durdur.") }
                 return
             }
         }
@@ -114,14 +114,14 @@ public actor GoToController {
         case busy,unsupported,outsideMap,staleMap,alreadyThere,lowBattery,unreadableSettings,restoreUnconfirmed
         public var errorDescription:String? {
             switch self {
-            case .busy:return "Robotun mevcut görevi veya hedef işlemi tamamlanmalı."
-            case .unsupported:return "Bu modelin hedefe gitme komutu henüz Swift sürümünde doğrulanmadı."
-            case .outsideMap:return "Hedef haritanın dışında."
-            case .staleMap:return "Güncel robot konumu alınmadan hedef hareketi başlatılamaz."
-            case .alreadyThere:return "Robot zaten bu noktada."
-            case .lowBattery:return "Hedef hareketi için pil en az %15 olmalı."
-            case .unreadableSettings:return "Hareket öncesi temizlik ayarları okunamadı."
-            case .restoreUnconfirmed:return "Önceki ayarların geri yüklendiği henüz doğrulanamadı."
+            case .busy:return Localization.text("Robotun mevcut görevi veya hedef işlemi tamamlanmalı.")
+            case .unsupported:return Localization.text("Bu modelin hedefe gitme komutu henüz Swift sürümünde doğrulanmadı.")
+            case .outsideMap:return Localization.text("Hedef haritanın dışında.")
+            case .staleMap:return Localization.text("Güncel robot konumu alınmadan hedef hareketi başlatılamaz.")
+            case .alreadyThere:return Localization.text("Robot zaten bu noktada.")
+            case .lowBattery:return Localization.text("Hedef hareketi için pil en az %15 olmalı.")
+            case .unreadableSettings:return Localization.text("Hareket öncesi temizlik ayarları okunamadı.")
+            case .restoreUnconfirmed:return Localization.text("Önceki ayarların geri yüklendiği henüz doğrulanamadı.")
             }
         }
     }
