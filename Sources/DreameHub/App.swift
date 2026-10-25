@@ -54,9 +54,10 @@ enum DreameHubMain {
             }
             dispatchMain()
         }
+        Localization.configure(englishTable:ResourcePaths.root.appendingPathComponent("assets/i18n/en.json"),preference:UserDefaults.standard.string(forKey:"dreameLanguage"))
         let app = NSApplication.shared
         let menu = NSMenu(), appMenu = NSMenu(), item = NSMenuItem()
-        appMenu.addItem(withTitle:"Çık",action:#selector(NSApplication.terminate(_:)),keyEquivalent:"q")
+        appMenu.addItem(withTitle:Localization.text("Çık"),action:#selector(NSApplication.terminate(_:)),keyEquivalent:"q")
         item.submenu = appMenu; menu.addItem(item); app.mainMenu = menu
         let delegate = AppDelegate()
         app.delegate = delegate
@@ -117,9 +118,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, WKSc
     @objc private func toggle() {
         if NSApp.currentEvent?.type == .rightMouseUp {
             let menu = NSMenu()
-            let open = menu.addItem(withTitle:"Pencerede aç",action:#selector(showWindow),keyEquivalent:""); open.target = self
+            let open = menu.addItem(withTitle:Localization.text("Pencerede aç"),action:#selector(showWindow),keyEquivalent:""); open.target = self
             menu.addItem(.separator())
-            menu.addItem(withTitle:"Dreame Hub Swift'ten çık",action:#selector(NSApplication.terminate(_:)),keyEquivalent:"q")
+            menu.addItem(withTitle:Localization.text("Dreame Hub Swift'ten çık"),action:#selector(NSApplication.terminate(_:)),keyEquivalent:"q")
             statusItem.menu = menu; statusItem.button?.performClick(nil); statusItem.menu = nil
             return
         }
@@ -149,7 +150,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, WKSc
         popover.performClose(nil)
         if window == nil {
             let win = NSWindow(contentRect:NSRect(x:0,y:0,width:900,height:690),styleMask:[.titled,.closable,.miniaturizable,.resizable,.fullSizeContentView],backing:.buffered,defer:false)
-            win.title = "Dreame Hub Swift — doğrulama sürümü"; win.titleVisibility = .hidden; win.titlebarAppearsTransparent = true
+            win.title = Localization.text("Dreame Hub Swift — doğrulama sürümü"); win.titleVisibility = .hidden; win.titlebarAppearsTransparent = true
             win.backgroundColor = .clear; win.isOpaque = false; win.isReleasedWhenClosed = false
             win.minSize = NSSize(width:700,height:520)
             win.contentView = material; material.frame = win.contentView!.bounds; material.autoresizingMask = [.width,.height]
@@ -168,7 +169,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, WKSc
     }
     func userContentController(_ userContentController:WKUserContentController,didReceive message:WKScriptMessage) {
         guard message.frameInfo.isMainFrame, message.frameInfo.securityOrigin.protocol == "dreamehub",
-              let body = message.body as? [String:Any],body["action"] as? String == "theme" else { return }
+              let body = message.body as? [String:Any] else { return }
+        if body["action"] as? String == "language" {
+            guard let language = body["language"] as? String,["system","tr","en"].contains(language),language != Localization.savedPreference else { return }
+            UserDefaults.standard.set(language,forKey:"dreameLanguage")
+            let previous = Localization.language
+            Localization.select(language)
+            if Localization.language != previous { webView.reload() }
+            return
+        }
+        guard body["action"] as? String == "theme" else { return }
         if let theme = body["theme"] as? String,["system","light","dark","liquid"].contains(theme) { UserDefaults.standard.set(theme,forKey:"dreameTheme") }
         switch body["theme"] as? String {
         case "light": material.appearance = NSAppearance(named:.aqua)
@@ -184,7 +194,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, WKSc
     func userContentController(_ userContentController:WKUserContentController,didReceive message:WKScriptMessage,replyHandler:@escaping(Any?,String?)->Void) {
         guard message.frameInfo.isMainFrame,message.frameInfo.securityOrigin.protocol == "dreamehub",message.frameInfo.securityOrigin.host == "app",
               let request = message.body as? [String:Any],let path = request["path"] as? String,path.hasPrefix("/api/") else {
-            replyHandler(nil,"Güvenilmeyen arayüz isteği."); return
+            replyHandler(nil,Localization.text("Güvenilmeyen arayüz isteği.")); return
         }
         Task { replyHandler(await api.response(path:path,method:request["method"] as? String ?? "GET",body:request["body"] as? [String:Any] ?? [:],binary:request["bodyBase64"] as? String),nil) }
     }
@@ -201,7 +211,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, WKSc
         if terminationApproved { return .terminateNow }
         Task {
             do { try await api.shutdown(); terminationApproved = true; NSApp.reply(toApplicationShouldTerminate:true) }
-            catch { let alert = NSAlert(); alert.messageText = "Robot işlemi henüz kapatılamadı"; alert.informativeText = error.localizedDescription; alert.runModal(); NSApp.reply(toApplicationShouldTerminate:false) }
+            catch { let alert = NSAlert(); alert.messageText = Localization.text("Robot işlemi henüz kapatılamadı"); alert.informativeText = error.localizedDescription; alert.runModal(); NSApp.reply(toApplicationShouldTerminate:false) }
         }
         return .terminateLater
     }
@@ -217,18 +227,18 @@ final class AppScheme: NSObject,WKURLSchemeHandler {
         tasks[id] = Task {
             defer { tasks[id] = nil }
             do {
-                guard let url = urlSchemeTask.request.url,url.host == "app" else { throw AppError.message("Geçersiz adres.") }
+                guard let url = urlSchemeTask.request.url,url.host == "app" else { throw AppError.message(Localization.text("Geçersiz adres.")) }
                 let data:Data, mime:String
                 if url.path.hasPrefix("/api/") {
                     let reply = await api.response(path:url.path,method:"GET",body:[:],binary:nil)
-                    guard let encoded = reply["bodyBase64"] as? String,let bytes = Data(base64Encoded:encoded) else { throw AppError.message("Dosya alınamadı.") }
+                    guard let encoded = reply["bodyBase64"] as? String,let bytes = Data(base64Encoded:encoded) else { throw AppError.message(Localization.text("Dosya alınamadı.")) }
                     data = bytes; mime = reply["contentType"] as? String ?? "application/octet-stream"
                 } else {
                     let root = ResourcePaths.root
                     let path = url.path == "/" || url.path.isEmpty ? "index.html" : String(url.path.dropFirst())
                     let file = root.appendingPathComponent(path).standardizedFileURL
-                    guard file.path.hasPrefix(root.standardizedFileURL.path + "/") else { throw AppError.message("Geçersiz dosya.") }
-                    data = try Data(contentsOf:file)
+                    guard file.path.hasPrefix(root.standardizedFileURL.path + "/") else { throw AppError.message(Localization.text("Geçersiz dosya.")) }
+                    data = path == "index.html" ? Data(Localization.localizedPage(String(decoding:try Data(contentsOf:file),as:UTF8.self)).utf8) : try Data(contentsOf:file)
                     mime = ["html":"text/html", "png":"image/png", "js":"application/javascript", "svg":"image/svg+xml"][file.pathExtension] ?? "application/octet-stream"
                 }
                 guard !Task.isCancelled else { return }

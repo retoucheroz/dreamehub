@@ -12,11 +12,11 @@ public enum MapDecoder {
         case malformed(String), encryptedMapNeedsIV, decryption, compression, incrementalFrame
         public var errorDescription: String? {
             switch self {
-            case .malformed(let reason): return "Harita verisi geçersiz: \(reason)"
-            case .encryptedMapNeedsIV: return "Şifreli harita için modele ait 16 baytlık IV gerekli."
-            case .decryption: return "Harita şifresi çözülemedi."
-            case .compression: return "Harita sıkıştırması çözülemedi veya güvenli boyut sınırı aşıldı."
-            case .incrementalFrame: return "Artımlı harita için önceki tam kare gerekli; tam harita yeniden istenmeli."
+            case .malformed(let reason): return Localization.text("Harita verisi geçersiz: {reason}",["reason":reason])
+            case .encryptedMapNeedsIV: return Localization.text("Şifreli harita için modele ait 16 baytlık IV gerekli.")
+            case .decryption: return Localization.text("Harita şifresi çözülemedi.")
+            case .compression: return Localization.text("Harita sıkıştırması çözülemedi veya güvenli boyut sınırı aşıldı.")
+            case .incrementalFrame: return Localization.text("Artımlı harita için önceki tam kare gerekli; tam harita yeniden istenmeli.")
             }
         }
     }
@@ -56,17 +56,17 @@ public enum MapDecoder {
 
     /// Public for deterministic protocol-fixture tests; input is the inflated on-device map frame.
     public static func decodeInflated(_ data: Data, version requestedVersion: Int = 1, nestingDepth:Int = 0) throws -> [String: Any] {
-        guard nestingDepth<=4 else { throw Failure.malformed("iç içe harita sınırı") }
+        guard nestingDepth<=4 else { throw Failure.malformed(Localization.text("iç içe harita sınırı")) }
         let bytes = [UInt8](data)
-        guard bytes.count >= 27 else { throw Failure.malformed("başlık kısa") }
+        guard bytes.count >= 27 else { throw Failure.malformed(Localization.text("başlık kısa")) }
         func integer(_ offset: Int) -> Int { Int(Int16(bitPattern: UInt16(bytes[offset]) | UInt16(bytes[offset + 1]) << 8)) }
         guard bytes[4] == 73 else {
             if bytes[4] == 80 { throw Failure.incrementalFrame }
-            throw Failure.malformed("desteklenmeyen kare türü \(bytes[4])")
+            throw Failure.malformed(Localization.text("desteklenmeyen kare türü {type}",["type":String(bytes[4])]))
         }
         let width = integer(19), height = integer(21), grid = integer(17)
         guard width > 0, height > 0, grid > 0, width <= 8192, height <= 8192,
-              width * height <= 16_777_216, bytes.count >= 27 + width * height else { throw Failure.malformed("boyut veya hücre verisi") }
+              width * height <= 16_777_216, bytes.count >= 27 + width * height else { throw Failure.malformed(Localization.text("boyut veya hücre verisi")) }
         let jsonStart = 27 + width * height
         var metadata: [String: Any] = [:]
         if jsonStart < bytes.count {
@@ -77,11 +77,11 @@ public enum MapDecoder {
             metadata = dict
         }
         let version = ["saveMapId", "cover", "diff", "curtain"].contains(where: { metadata[$0] != nil }) ? max(3, requestedVersion) : requestedVersion
-        guard (0...3).contains(version) else { throw Failure.malformed("desteklenmeyen harita sürümü") }
+        guard (0...3).contains(version) else { throw Failure.malformed(Localization.text("desteklenmeyen harita sürümü")) }
         let origin = metadata["origin"] as? [Int]
         let left = origin.flatMap { $0.count >= 2 ? $0[0] : nil } ?? integer(23)
         let top = origin.flatMap { $0.count >= 2 ? $0[1] : nil } ?? integer(25)
-        guard (-100_000_000...100_000_000).contains(left), (-100_000_000...100_000_000).contains(top) else { throw Failure.malformed("harita başlangıç koordinatı") }
+        guard (-100_000_000...100_000_000).contains(left), (-100_000_000...100_000_000).contains(top) else { throw Failure.malformed(Localization.text("harita başlangıç koordinatı")) }
         let status = number(metadata["ris"], fallback: -1)
         let frameMap = number(metadata["fsm"]) == 1
         var layers: [String: [Int]] = [:]
@@ -172,7 +172,7 @@ public enum MapDecoder {
     }
 
     private static func composeSaved(_ result:inout [String:Any],currentBytes:[UInt8],metadata:[String:Any],savedBytes:[UInt8],saved:[String:Any]) throws {
-        guard let currentSize=result["size"] as? [Any],let savedSize=saved["size"] as? [Any],currentSize.count>=9,savedSize.count>=9 else { throw Failure.malformed("kayıtlı harita boyutu") }
+        guard let currentSize=result["size"] as? [Any],let savedSize=saved["size"] as? [Any],currentSize.count>=9,savedSize.count>=9 else { throw Failure.malformed(Localization.text("kayıtlı harita boyutu")) }
         let status=number(metadata["ris"],fallback:-1),fsm=number(metadata["fsm"])==1
         let empty=result["empty_map"] as? Bool ?? true
         let restored=number(metadata["rpur"])==1 || (empty && status==2 && !fsm)
@@ -185,10 +185,10 @@ public enum MapDecoder {
             if status==2 && !fsm {
                 let cl=number(currentSize[0]),ct=number(currentSize[1]),cw=number(currentSize[4]),ch=number(currentSize[5]),grid=number(currentSize[6])
                 let sl=number(savedSize[0]),st=number(savedSize[1]),sw=number(savedSize[4]),sh=number(savedSize[5])
-                guard grid>0,grid==number(savedSize[6]) else { throw Failure.malformed("kayıtlı harita hücre aralığı") }
+                guard grid>0,grid==number(savedSize[6]) else { throw Failure.malformed(Localization.text("kayıtlı harita hücre aralığı")) }
                 let left=min(cl,sl),top=min(ct,st),width=(max(cl+cw*grid,sl+sw*grid)-left)/grid,height=(max(ct+ch*grid,st+sh*grid)-top)/grid
                 guard width>0,height>0,width<=8192,height<=8192,width*height<=16_777_216,
-                      currentBytes.count>=27+cw*ch,savedBytes.count>=27+sw*sh else { throw Failure.malformed("birleşik harita sınırı") }
+                      currentBytes.count>=27+cw*ch,savedBytes.count>=27+sw*sh else { throw Failure.malformed(Localization.text("birleşik harita sınırı")) }
                 var cells=[Int](repeating:0,count:width*height)
                 let si=(sl-left)/grid,sj=(st-top)/grid,ni=(cl-left)/grid,nj=(ct-top)/grid
                 for y in 0..<height { for x in 0..<width {
@@ -348,7 +348,7 @@ public final class MapStreamDecoder {
     }
     public func acceptInflated(_ incoming: Data, version: Int = 1) throws -> [String: Any] {
         let p = [UInt8](incoming)
-        guard p.count >= 27 else { throw MapDecoder.Failure.malformed("artımlı başlık") }
+        guard p.count >= 27 else { throw MapDecoder.Failure.malformed(Localization.text("artımlı başlık")) }
         func i16(_ data: [UInt8], _ n: Int) -> Int { Int(Int16(bitPattern: UInt16(data[n]) | UInt16(data[n+1]) << 8)) }
         if p[4] == 73 {
             let result = try MapDecoder.decodeInflated(incoming, version: version)
@@ -364,13 +364,13 @@ public final class MapStreamDecoder {
         let bw = i16(b,19), bh = i16(b,21), pw = i16(p,19), ph = i16(p,21), grid = i16(b,17)
         guard grid > 0, i16(p,17) == grid, pw >= 0, ph >= 0,
               pw <= 8192, ph <= 8192, pw * ph <= 16_777_216, p.count >= 27 + pw * ph else {
-            throw MapDecoder.Failure.malformed("artımlı boyut")
+            throw MapDecoder.Failure.malformed(Localization.text("artımlı boyut"))
         }
         func json(_ data: [UInt8], _ width: Int, _ height: Int) throws -> [String:Any] {
             let start = 27 + width * height
-            guard start <= data.count else { throw MapDecoder.Failure.malformed("artımlı metadata") }
+            guard start <= data.count else { throw MapDecoder.Failure.malformed(Localization.text("artımlı metadata")) }
             if start == data.count { return [:] }
-            guard let object = try JSONSerialization.jsonObject(with: Data(data[start...])) as? [String:Any] else { throw MapDecoder.Failure.malformed("artımlı metadata") }
+            guard let object = try JSONSerialization.jsonObject(with: Data(data[start...])) as? [String:Any] else { throw MapDecoder.Failure.malformed(Localization.text("artımlı metadata")) }
             return object
         }
         var old = try json(b,bw,bh)
@@ -391,7 +391,7 @@ public final class MapStreamDecoder {
         guard (bl-left)%grid == 0, (pl-left)%grid == 0, (bt-top)%grid == 0, (pt-top)%grid == 0 else { throw MapDecoder.Failure.incrementalFrame }
         let w = (max(bl+bw*grid,pl+pw*grid)-left)/grid, h = (max(bt+bh*grid,pt+ph*grid)-top)/grid
         guard w > 0, h > 0, w <= 8192, h <= 8192, w*h <= 16_777_216,
-              (-32768...32767).contains(left), (-32768...32767).contains(top) else { throw MapDecoder.Failure.malformed("birleşik boyut") }
+              (-32768...32767).contains(left), (-32768...32767).contains(top) else { throw MapDecoder.Failure.malformed(Localization.text("birleşik boyut")) }
         var cells = [UInt8](repeating:0,count:w*h)
         let bx=(bl-left)/grid, by=(bt-top)/grid, px=(pl-left)/grid, py=(pt-top)/grid
         for y in 0..<bh { for x in 0..<bw { cells[(y+by)*w+x+bx]=b[27+y*bw+x] } }

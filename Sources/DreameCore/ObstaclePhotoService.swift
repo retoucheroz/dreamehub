@@ -22,10 +22,10 @@ public actor ObstaclePhotoService {
         case unavailable, unsupportedStorage, decryption, invalidImage
         public var errorDescription:String? {
             switch self {
-            case .unavailable:return "Bu nesnenin fotoğraf kaydı yok veya artık erişilemiyor."
-            case .unsupportedStorage:return "Bu modelin yerel fotoğraf şifreleme akışı henüz doğrulanmadı."
-            case .decryption:return "Nesne fotoğrafının şifresi çözülemedi."
-            case .invalidImage:return "Cihazdan gelen dosya geçerli bir fotoğraf değil."
+            case .unavailable:return Localization.text("Bu nesnenin fotoğraf kaydı yok veya artık erişilemiyor.")
+            case .unsupportedStorage:return Localization.text("Bu modelin yerel fotoğraf şifreleme akışı henüz doğrulanmadı.")
+            case .decryption:return Localization.text("Nesne fotoğrafının şifresi çözülemedi.")
+            case .invalidImage:return Localization.text("Cihazdan gelen dosya geçerli bir fotoğraf değil.")
             }
         }
     }

@@ -34,9 +34,9 @@ public enum DeviceContract {
         case invalidCommand, invalidValue, rejected
         public var errorDescription: String? {
             switch self {
-            case .invalidCommand: return "Bilinmeyen komut."
-            case .invalidValue: return "Geçersiz ayar değeri."
-            case .rejected: return "Cihaz komutu kabul etmedi veya yanıt doğrulanamadı."
+            case .invalidCommand: return Localization.text("Bilinmeyen komut.")
+            case .invalidValue: return Localization.text("Geçersiz ayar değeri.")
+            case .rejected: return Localization.text("Cihaz komutu kabul etmedi veya yanıt doğrulanamadı.")
             }
         }
     }

@@ -26,6 +26,7 @@ swift test
 node Tests/JS/MapPresentationTests.js
 node Tests/JS/RobotMotionTests.js
 node Tests/JS/MapRefreshTests.js
+node Tests/JS/LocalizationTests.js
 open "build/Dreame Hub Swift.app" --args --read-only
 ```
 

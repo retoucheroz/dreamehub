@@ -78,15 +78,15 @@ public enum CloudError: Error, LocalizedError, Sendable {
     case invalidRegion, notAuthenticated, authenticationRejected, invalidResponse, server(Int), api(Int), invalidURL, cryptoFailure, commandResultUnknown
     public var errorDescription: String? {
         switch self {
-        case .invalidRegion: return "Sunucu bölgesi geçersiz."
-        case .notAuthenticated: return "Dreame hesabına giriş gerekli."
-        case .authenticationRejected: return "Dreame oturumu kabul edilmedi."
-        case .invalidResponse: return "Dreame yanıtı beklenen biçimde değil."
-        case .server(let code): return "Dreame sunucusu HTTP \(code) döndürdü."
-        case .api(let code): return "Dreame isteği reddedildi (\(code))."
-        case .invalidURL: return "Dosya adresi güvenli değil veya geçersiz."
-        case .cryptoFailure: return "Dreame istek imzası hazırlanamadı."
-        case .commandResultUnknown: return "Komut sonucu doğrulanamadı; otomatik tekrar gönderilmedi."
+        case .invalidRegion: return Localization.text("Sunucu bölgesi geçersiz.")
+        case .notAuthenticated: return Localization.text("Dreame hesabına giriş gerekli.")
+        case .authenticationRejected: return Localization.text("Dreame oturumu kabul edilmedi.")
+        case .invalidResponse: return Localization.text("Dreame yanıtı beklenen biçimde değil.")
+        case .server(let code): return Localization.text("Dreame sunucusu HTTP {code} döndürdü.",["code":String(code)])
+        case .api(let code): return Localization.text("Dreame isteği reddedildi ({code}).",["code":String(code)])
+        case .invalidURL: return Localization.text("Dosya adresi güvenli değil veya geçersiz.")
+        case .cryptoFailure: return Localization.text("Dreame istek imzası hazırlanamadı.")
+        case .commandResultUnknown: return Localization.text("Komut sonucu doğrulanamadı; otomatik tekrar gönderilmedi.")
         }
     }
 }

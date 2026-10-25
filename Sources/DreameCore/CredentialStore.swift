@@ -57,6 +57,6 @@ public enum CredentialStore {
     }
     public enum StoreError: LocalizedError {
         case status(OSStatus)
-        public var errorDescription: String? { "macOS Anahtar Zinciri işlemi tamamlanamadı." }
+        public var errorDescription: String? { Localization.text("macOS Anahtar Zinciri işlemi tamamlanamadı.") }
     }
 }

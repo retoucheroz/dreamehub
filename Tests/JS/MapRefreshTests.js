@@ -8,6 +8,7 @@ const start = html.indexOf('let mapRequestGeneration=');
 const end = html.indexOf('\nlet savedLoginAttempted=', start);
 assert(start >= 0 && end > start, 'Actual loadMap source found');
 const stop = html.match(/^function stopMapLive\([^\n]+/m)[0];
+const i18n = html.match(/^const LANG=[^\n]+/m)[0] + '\n' + html.match(/^function t\([^\n]+/m)[0];
 const refresh = html.slice(start, end);
 const {create:createMotion}=require('../../Sources/DreameHub/Resources/assets/robot-motion.js');
 
@@ -19,7 +20,7 @@ function harness() {
     return elements.get(id);
   };
   const s = {
-    $, activeTab:'map', document:{visibilityState:'visible'}, mapFetchBusy:false,
+    $, window:{}, activeTab:'map', document:{visibilityState:'visible'}, mapFetchBusy:false,
     mapLiveTimer:null, mapFrameTimer:null, mapTarget:null, navigationActive:false, navigationArrivalHits:0,
     lastMap:null, lastMapFrameId:null, lastMapTimestamp:null, lastMapPoseKey:'',
     robotMotion:{freeze(){frozen++},reset(){resets++}},
@@ -29,7 +30,7 @@ function harness() {
     drawMap(map){drawn.push(map);s.lastMap=map;$('mapMessage').hidden=true;},ensureMapAnimation(){animations++},
     scheduleMapLive(delay){scheduled.push(delay)},targetDistance(){return null},showToast(){},
   };
-  vm.createContext(s);vm.runInContext(stop+'\n'+refresh,s);
+  vm.createContext(s);vm.runInContext(i18n+'\n'+stop+'\n'+refresh,s);
   return {s,$,calls,drawn,samples,scheduled,get frozen(){return frozen},get resets(){return resets},
     get animations(){return animations},stop(){s.stopMapLive()}};
 }

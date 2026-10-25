@@ -73,18 +73,18 @@ public actor DeviceService {
         let suction = switches["SuctionMax"] == 1 ? 4 : n(4,4)
         let mapping: [(String,Int,Int)] = [("state",2,1),("error",2,2),("battery",3,1),("charging",3,2),("status",4,1),("cleaning_time",4,2),("cleaned_area",4,3),("cleaning_progress",4,63),("drying_progress",4,64),("base_status",4,25),("voice_language",7,2),("voice_status",7,3)]
         for (key,s,i) in mapping { result[key] = p(s,i) }
-        result["state_text"] = n(2,1).map { DeviceContract.stateNames[$0] ?? "Durum \($0)" } ?? "Bilinmiyor"
-        result["base_status_text"] = n(4,25).flatMap { DeviceContract.baseNames[$0] } ?? "Bilinmiyor"
-        result["voice_status_text"] = n(7,3).flatMap { [0:"Hazır",1:"Paket indiriliyor",2:"Paket kuruluyor",3:"Tamamlandı",4:"Kurulum başarısız"][$0] } ?? "Durum bekleniyor"
-        result["suction"] = suction as Any? ?? NSNull(); result["suction_text"] = suction == 4 ? "Maks+" : (suction.flatMap { DeviceContract.suctionNames[$0] } as Any? ?? NSNull())
-        result["water"] = water as Any? ?? NSNull(); result["water_text"] = water.flatMap { DeviceContract.waterNames[$0] } as Any? ?? NSNull()
-        result["cleaning_mode"] = mode as Any? ?? NSNull(); result["cleaning_mode_text"] = mode.flatMap { DeviceContract.modeNames[$0] } as Any? ?? NSNull()
+        result["state_text"] = n(2,1).map { code in DeviceContract.stateNames[code].map { Localization.text($0) } ?? Localization.text("Durum {code}",["code":String(code)]) } ?? Localization.text("Bilinmiyor")
+        result["base_status_text"] = Localization.text(n(4,25).flatMap { DeviceContract.baseNames[$0] } ?? "Bilinmiyor")
+        result["voice_status_text"] = Localization.text(n(7,3).flatMap { [0:"Hazır",1:"Paket indiriliyor",2:"Paket kuruluyor",3:"Tamamlandı",4:"Kurulum başarısız"][$0] } ?? "Durum bekleniyor")
+        result["suction"] = suction as Any? ?? NSNull(); result["suction_text"] = suction == 4 ? Localization.text("Maks+") : (suction.flatMap { DeviceContract.suctionNames[$0] }.map { Localization.text($0) } as Any? ?? NSNull())
+        result["water"] = water as Any? ?? NSNull(); result["water_text"] = water.flatMap { DeviceContract.waterNames[$0] }.map { Localization.text($0) } as Any? ?? NSNull()
+        result["cleaning_mode"] = mode as Any? ?? NSNull(); result["cleaning_mode_text"] = mode.flatMap { DeviceContract.modeNames[$0] }.map { Localization.text($0) } as Any? ?? NSNull()
         result["consumables"] = ["main_brush":p(9,1),"side_brush":p(10,1),"filter":p(11,1),"sensor":p(16,1)]
         var dock:[String:Any] = [:]
         let dockNames:[String:[Int:String]] = ["clean_water":[0:"Hazır",1:"Takılı değil",2:"Su az / boş",3:"Şebeke bağlı"],"dirty_water":[0:"Hazır",1:"Dolu veya takılı değil"],"dust_bag":[0:"Hazır",1:"Takılı değil",2:"Dolu"],"detergent":[0:"Hazır",1:"Takılı değil",2:"Boş"]]
         for (key,index) in [("clean_water",1),("dirty_water",2),("dust_bag",3),("detergent",4)] {
             let value = n(27,index)
-            dock[key] = ["value":p(27,index),"text":value.map { dockNames[key]?[$0] ?? "Durum \($0)" } as Any? ?? NSNull(),"attention":value.map { key == "clean_water" ? ![0,3].contains($0) : $0 != 0 } ?? false]
+            dock[key] = ["value":p(27,index),"text":value.map { code in dockNames[key]?[code].map { Localization.text($0) } ?? Localization.text("Durum {code}",["code":String(code)]) } as Any? ?? NSNull(),"attention":value.map { key == "clean_water" ? ![0,3].contains($0) : $0 != 0 } ?? false]
         }
         result["dock_health"] = dock
         result["sensor_profile"] = [:] as [String:Bool] // No inferred sensor stream capability.
@@ -98,7 +98,7 @@ public actor DeviceService {
         var controls: [String:Any] = [:]
         func control(_ name:String,_ label:String,_ value:Int?,_ choices:[(Int,String)]) {
             guard let value else { return }
-            controls[name] = ["label":label,"value":value,"available":true,"reason":"","options":choices.map { ["value":$0.0,"label":$0.1,"available":true] as [String:Any] }]
+            controls[name] = ["label":Localization.text(label),"value":value,"available":true,"reason":"","options":choices.map { ["value":$0.0,"label":Localization.text($0.1),"available":true] as [String:Any] }]
         }
         var suctionOptions = [(0,"Sessiz"),(1,"Standart"),(2,"Turbo"),(3,"Maks")]
         if switches["SuctionMax"] != nil { suctionOptions.append((4,"Maks+")) }
@@ -168,7 +168,7 @@ public actor DeviceService {
     public enum ServiceError: LocalizedError {
         case noDevices, unsupported, busy
         public var errorDescription:String? {
-            switch self { case .noDevices:return "Bu hesapta seçilebilir Dreame süpürge bulunamadı."; case .unsupported:return "Bu özellik cihazdan doğrulanamadı."; case .busy:return "Önceki komutun yanıtı bekleniyor." }
+            switch self { case .noDevices:return Localization.text("Bu hesapta seçilebilir Dreame süpürge bulunamadı."); case .unsupported:return Localization.text("Bu özellik cihazdan doğrulanamadı."); case .busy:return Localization.text("Önceki komutun yanıtı bekleniyor.") }
         }
     }
 }

@@ -126,12 +126,12 @@ public final class LoopbackHTTPServer: @unchecked Sendable {
             let file=root.appendingPathComponent(relative).resolvingSymlinksInPath()
             guard file.path.hasPrefix(root.path+"/"),let data=try? Data(contentsOf:file),data.count<=24*1024*1024 else { error(connection,404); return }
             let types=["html":"text/html; charset=utf-8","css":"text/css","js":"application/javascript","png":"image/png","svg":"image/svg+xml","jpg":"image/jpeg","webp":"image/webp","ico":"image/x-icon"]
-            if relative=="index.html" { guard let html=String(data:data,encoding:.utf8) else { throw ServerError.invalid }; send(connection,status:200,type:types["html"]!,data:Data(html.replacingOccurrences(of:"__TOKEN__",with:token).utf8)) }
+            if relative=="index.html" { guard let html=String(data:data,encoding:.utf8) else { throw ServerError.invalid }; send(connection,status:200,type:types["html"]!,data:Data(Localization.localizedPage(html.replacingOccurrences(of:"__TOKEN__",with:token)).utf8)) }
             else { send(connection,status:200,type:types[file.pathExtension] ?? "application/octet-stream",data:data) }
         } catch ServerError.forbidden { error(connection,403) }
         catch { self.error(connection,400) }
     }
-    private func error(_ connection:NWConnection,_ status:Int) { send(connection,status:status,type:"application/json",data:Data("{\"error\":\"İstek kabul edilmedi.\"}".utf8)) }
+    private func error(_ connection:NWConnection,_ status:Int) { send(connection,status:status,type:"application/json",data:(try? JSONSerialization.data(withJSONObject:["error":Localization.text("İstek kabul edilmedi.")])) ?? Data()) }
     private func send(_ connection:NWConnection,status:Int,type:String,data:Data) {
         let safeType=type.contains("\r") || type.contains("\n") ? "application/octet-stream" : type
         let header="HTTP/1.1 \(status) Response\r\nContent-Type: \(safeType)\r\nContent-Length: \(data.count)\r\nCache-Control: no-store\r\nX-Content-Type-Options: nosniff\r\nReferrer-Policy: no-referrer\r\nContent-Security-Policy: frame-ancestors 'none'\r\nConnection: close\r\n\r\n"

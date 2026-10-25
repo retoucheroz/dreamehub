@@ -103,13 +103,13 @@ public actor TailscaleService {
         case notInstalled,invalidPort,notConnected,failed,conflict,publicEndpoint,notVerified
         public var errorDescription:String? {
             switch self {
-            case .notInstalled:return "Tailscale bu Mac’te kurulu değil."
-            case .invalidPort:return "Yerel uygulama portu geçersiz."
-            case .notConnected:return "Önce Tailscale bağlantısını aç."
-            case .failed:return "Tailscale işlemi tamamlanamadı."
-            case .conflict:return "8443 portunda başka bir Serve yapılandırması var; değiştirilmedi."
-            case .publicEndpoint:return "8443 portu Funnel ile herkese açık; güvenli olmayan yapılandırma değiştirilmedi."
-            case .notVerified:return "Tailscale değişikliği doğrulanamadı."
+            case .notInstalled:return Localization.text("Tailscale bu Mac’te kurulu değil.")
+            case .invalidPort:return Localization.text("Yerel uygulama portu geçersiz.")
+            case .notConnected:return Localization.text("Önce Tailscale bağlantısını aç.")
+            case .failed:return Localization.text("Tailscale işlemi tamamlanamadı.")
+            case .conflict:return Localization.text("8443 portunda başka bir Serve yapılandırması var; değiştirilmedi.")
+            case .publicEndpoint:return Localization.text("8443 portu Funnel ile herkese açık; güvenli olmayan yapılandırma değiştirilmedi.")
+            case .notVerified:return Localization.text("Tailscale değişikliği doğrulanamadı.")
             }
         }
     }

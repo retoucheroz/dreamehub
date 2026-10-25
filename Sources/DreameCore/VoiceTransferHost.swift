@@ -21,8 +21,8 @@ public final class VoiceTransferHost: @unchecked Sendable {
     private var starting = false
 
     public init(payload: Data, peerIP: String) throws {
-        guard !payload.isEmpty, payload.count <= VoiceService.maxPackBytes else { throw VoiceServiceError("Ses paketi boyutu geçersiz.") }
-        guard Self.isLocalIPv4(peerIP) else { throw VoiceServiceError("Süpürgenin doğrulanmış yerel IPv4 adresi gerekli.") }
+        guard !payload.isEmpty, payload.count <= VoiceService.maxPackBytes else { throw VoiceServiceError(Localization.text("Ses paketi boyutu geçersiz.")) }
+        guard Self.isLocalIPv4(peerIP) else { throw VoiceServiceError(Localization.text("Süpürgenin doğrulanmış yerel IPv4 adresi gerekli.")) }
         self.payload = payload
         self.peerIP = peerIP
         self.localIP = try Self.localAddress(reaching: peerIP)
@@ -31,7 +31,7 @@ public final class VoiceTransferHost: @unchecked Sendable {
     public func start() async throws -> URL {
         try await withCheckedThrowingContinuation { continuation in
             queue.async {
-                guard !self.starting, self.listener == nil else { continuation.resume(throwing: VoiceServiceError("Ses aktarımı zaten açık.")); return }
+                guard !self.starting, self.listener == nil else { continuation.resume(throwing: VoiceServiceError(Localization.text("Ses aktarımı zaten açık."))); return }
                 self.starting = true; self.startup = continuation
                 do {
                     let parameters = NWParameters.tcp
@@ -46,7 +46,7 @@ public final class VoiceTransferHost: @unchecked Sendable {
                         case .ready:
                             guard let port = self.listener?.port?.rawValue,
                                   let url = URL(string: "http://\(self.localIP):\(port)\(self.path)") else {
-                                self.finishStartup(.failure(VoiceServiceError("Aktarım adresi oluşturulamadı."))); return
+                                self.finishStartup(.failure(VoiceServiceError(Localization.text("Aktarım adresi oluşturulamadı.")))); return
                             }
                             self.port = port
                             self.finishStartup(.success(url))
@@ -54,14 +54,14 @@ public final class VoiceTransferHost: @unchecked Sendable {
                             self.expiry = expiry
                             self.queue.asyncAfter(deadline: .now() + 900, execute: expiry)
                         case .failed(let error): self.finishStartup(.failure(error)); self.stopOnQueue()
-                        case .cancelled: self.finishStartup(.failure(VoiceServiceError("Ses aktarımı kapandı.")))
+                        case .cancelled: self.finishStartup(.failure(VoiceServiceError(Localization.text("Ses aktarımı kapandı."))))
                         default: break
                         }
                     }
                     listener.start(queue: self.queue)
                     self.queue.asyncAfter(deadline: .now() + 10) { [weak self] in
                         guard let self, self.startup != nil else { return }
-                        self.finishStartup(.failure(VoiceServiceError("Yerel aktarım sunucusu zamanında açılamadı.")))
+                        self.finishStartup(.failure(VoiceServiceError(Localization.text("Yerel aktarım sunucusu zamanında açılamadı."))))
                         self.stopOnQueue()
                     }
                 } catch { self.finishStartup(.failure(error)); self.stopOnQueue() }
@@ -88,7 +88,7 @@ public final class VoiceTransferHost: @unchecked Sendable {
         listener?.cancel(); listener = nil; port = nil
         for connection in connections.values { connection.cancel() }
         connections.removeAll()
-        finishStartup(.failure(VoiceServiceError("Ses aktarımı kapandı.")))
+        finishStartup(.failure(VoiceServiceError(Localization.text("Ses aktarımı kapandı."))))
     }
 
     private func accept(_ connection: NWConnection) {
@@ -154,18 +154,18 @@ public final class VoiceTransferHost: @unchecked Sendable {
     }
 
     public static func byteRange(_ header: String?, count: Int) throws -> Range<Int> {
-        guard count > 0 else { throw VoiceServiceError("Boş paket.") }
+        guard count > 0 else { throw VoiceServiceError(Localization.text("Boş paket.")) }
         guard let header else { return 0..<count }
-        guard header.hasPrefix("bytes="), !header.contains(",") else { throw VoiceServiceError("Geçersiz aralık.") }
+        guard header.hasPrefix("bytes="), !header.contains(",") else { throw VoiceServiceError(Localization.text("Geçersiz aralık.")) }
         let parts = header.dropFirst(6).split(separator: "-", omittingEmptySubsequences: false)
-        guard parts.count == 2 else { throw VoiceServiceError("Geçersiz aralık.") }
+        guard parts.count == 2 else { throw VoiceServiceError(Localization.text("Geçersiz aralık.")) }
         if parts[0].isEmpty {
-            guard let suffix = Int(parts[1]), suffix > 0 else { throw VoiceServiceError("Geçersiz aralık.") }
+            guard let suffix = Int(parts[1]), suffix > 0 else { throw VoiceServiceError(Localization.text("Geçersiz aralık.")) }
             return max(0, count - suffix)..<count
         }
-        guard let start = Int(parts[0]), start >= 0, start < count else { throw VoiceServiceError("Geçersiz aralık.") }
+        guard let start = Int(parts[0]), start >= 0, start < count else { throw VoiceServiceError(Localization.text("Geçersiz aralık.")) }
         let end = parts[1].isEmpty ? count - 1 : (Int(parts[1]) ?? -1)
-        guard end >= start else { throw VoiceServiceError("Geçersiz aralık.") }
+        guard end >= start else { throw VoiceServiceError(Localization.text("Geçersiz aralık.")) }
         return start..<(min(end, count - 1) + 1)
     }
 
@@ -178,18 +178,18 @@ public final class VoiceTransferHost: @unchecked Sendable {
 
     private static func localAddress(reaching peer: String) throws -> String {
         let fd = Darwin.socket(AF_INET, SOCK_DGRAM, 0)
-        guard fd >= 0 else { throw VoiceServiceError("Yerel ağ adresi bulunamadı.") }
+        guard fd >= 0 else { throw VoiceServiceError(Localization.text("Yerel ağ adresi bulunamadı.")) }
         defer { Darwin.close(fd) }
         var remote = sockaddr_in()
         remote.sin_len = UInt8(MemoryLayout<sockaddr_in>.size); remote.sin_family = sa_family_t(AF_INET); remote.sin_port = UInt16(80).bigEndian
-        guard inet_pton(AF_INET, peer, &remote.sin_addr) == 1 else { throw VoiceServiceError("Geçersiz robot adresi.") }
+        guard inet_pton(AF_INET, peer, &remote.sin_addr) == 1 else { throw VoiceServiceError(Localization.text("Geçersiz robot adresi.")) }
         let connected = withUnsafePointer(to: &remote) { ptr in ptr.withMemoryRebound(to: sockaddr.self, capacity: 1) { Darwin.connect(fd, $0, socklen_t(MemoryLayout<sockaddr_in>.size)) } }
-        guard connected == 0 else { throw VoiceServiceError("Robotun yerel ağına erişilemiyor.") }
+        guard connected == 0 else { throw VoiceServiceError(Localization.text("Robotun yerel ağına erişilemiyor.")) }
         var local = sockaddr_in(), length = socklen_t(MemoryLayout<sockaddr_in>.size)
         let result = withUnsafeMutablePointer(to: &local) { ptr in ptr.withMemoryRebound(to: sockaddr.self, capacity: 1) { getsockname(fd, $0, &length) } }
-        guard result == 0 else { throw VoiceServiceError("Mac'in yerel ağ adresi bulunamadı.") }
+        guard result == 0 else { throw VoiceServiceError(Localization.text("Mac'in yerel ağ adresi bulunamadı.")) }
         var text = [CChar](repeating: 0, count: Int(INET_ADDRSTRLEN))
-        guard inet_ntop(AF_INET, &local.sin_addr, &text, socklen_t(INET_ADDRSTRLEN)) != nil else { throw VoiceServiceError("Yerel adres çözülemedi.") }
+        guard inet_ntop(AF_INET, &local.sin_addr, &text, socklen_t(INET_ADDRSTRLEN)) != nil else { throw VoiceServiceError(Localization.text("Yerel adres çözülemedi.")) }
         return String(cString: text)
     }
 }
