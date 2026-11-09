@@ -4,9 +4,9 @@
 
 [Türkçe](README.tr.md) · English
 
-[![Download for macOS](https://img.shields.io/badge/Download_for_macOS-Apple_Silicon-3478F6?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/retoucheroz/dreamehub/releases/download/v0.2.3/Dreame-Hub-Swift-0.2.3-preview-arm64.dmg)
+[![Download for macOS](https://img.shields.io/badge/Download_for_macOS-Apple_Silicon-3478F6?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/retoucheroz/dreamehub/releases/download/v0.2.4/Dreame-Hub-Swift-0.2.4-preview-arm64.dmg)
 
-**[Download v0.2.3 DMG](https://github.com/retoucheroz/dreamehub/releases/download/v0.2.3/Dreame-Hub-Swift-0.2.3-preview-arm64.dmg)** · macOS 13+ · M1/M2/M3/M4 or later Apple Silicon. Open the DMG, drag the app into Applications, then launch it and use the menu-bar icon. This preview is ad-hoc signed, not Apple-notarized; macOS may require approval in Privacy & Security. Intel Macs are not supported by this download. [Release notes](https://github.com/retoucheroz/dreamehub/releases/tag/v0.2.3).
+**[Download v0.2.4 DMG](https://github.com/retoucheroz/dreamehub/releases/download/v0.2.4/Dreame-Hub-Swift-0.2.4-preview-arm64.dmg)** · macOS 13+ · M1/M2/M3/M4 or later Apple Silicon. Open the DMG, drag the app into Applications, then launch it and use the menu-bar icon. This preview is ad-hoc signed, not Apple-notarized; macOS may require approval in Privacy & Security. Intel Macs are not supported by this download. [Release notes](https://github.com/retoucheroz/dreamehub/releases/tag/v0.2.4).
 
 **MOVA Home support (preview), now with product images in v0.2.3.** Select Dreame Home or MOVA Home at login. The MOVA catalog recognizes 22 model families / 84 exact identifiers and includes 21 transparent manufacturer product PNGs—not AI-generated substitutes. **No real MOVA account or robot has been used to validate this integration yet:** live login, maps and physical controls remain unverified. MOVA target navigation is not enabled. [MOVA details and limitations](docs/MOVA.md).
 
@@ -46,7 +46,7 @@ The product film uses the actual interface and recorded map. Robot motion is sim
 
 Requires an Apple Silicon Mac, macOS 13 or later and a Dreame Home or MOVA Home account. Sign in, select your robot and open Dreame Hub from its menu-bar icon. Saved credentials, including the selected provider, stay in macOS Keychain. Existing saved Dreame accounts remain compatible.
 
-**Language:** the interface is available in Turkish and English. By default it follows your macOS language (Turkish if Turkish is first in your preferred languages, otherwise English); change it under Preferences → System / Türkçe / English.
+**Language:** the interface is available in English and Turkish. It opens in English by default; switch to Türkçe, or to System (follow your macOS language), under Preferences → Language.
 
 For a source build, install a compatible Swift toolchain and run:
 

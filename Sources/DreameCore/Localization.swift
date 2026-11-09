@@ -6,8 +6,10 @@ public enum Localization {
     public static let languages = ["tr", "en"]
     private static let lock = NSLock()
     private static var english: [String: String] = [:]
-    private static var preference = "system"
-    private static var current = "tr"
+    /// Choice used when nothing (or an unknown value) is saved: the app opens in English.
+    public static let defaultPreference = "en"
+    private static var preference = defaultPreference
+    private static var current = defaultPreference
 
     /// Resolved language: "tr" or "en".
     public static var language: String { lock.lock(); defer { lock.unlock() }; return current }
@@ -21,7 +23,8 @@ public enum Localization {
     }
 
     public static func select(_ saved: String?) {
-        let choice = saved.flatMap { languages.contains($0) ? $0 : nil } ?? "system"
+        // "system" is only used when the user picked it explicitly; otherwise default to English.
+        let choice = saved.flatMap { $0 == "system" || languages.contains($0) ? $0 : nil } ?? defaultPreference
         let resolved = resolve(choice)
         lock.lock(); preference = choice; current = resolved; lock.unlock()
     }

@@ -4,9 +4,9 @@
 
 Türkçe · [English](README.md)
 
-[![macOS için indir](https://img.shields.io/badge/macOS_i%C3%A7in_indir-Apple_Silicon-3478F6?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/retoucheroz/dreamehub/releases/download/v0.2.3/Dreame-Hub-Swift-0.2.3-preview-arm64.dmg)
+[![macOS için indir](https://img.shields.io/badge/macOS_i%C3%A7in_indir-Apple_Silicon-3478F6?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/retoucheroz/dreamehub/releases/download/v0.2.4/Dreame-Hub-Swift-0.2.4-preview-arm64.dmg)
 
-**[v0.2.3 DMG indir](https://github.com/retoucheroz/dreamehub/releases/download/v0.2.3/Dreame-Hub-Swift-0.2.3-preview-arm64.dmg)** · macOS 13+ · M1/M2/M3/M4 ve sonraki Apple Silicon Mac’ler. DMG’yi aç, uygulamayı Applications klasörüne sürükle, başlat ve menü çubuğundaki ikonunu kullan. Bu önizleme ad-hoc imzalıdır; Apple noter onayı yoktur. İlk açılışta Gizlilik ve Güvenlik bölümünden onay gerekebilir. Bu indirme Intel Mac’leri desteklemez. [Sürüm notları](https://github.com/retoucheroz/dreamehub/releases/tag/v0.2.3).
+**[v0.2.4 DMG indir](https://github.com/retoucheroz/dreamehub/releases/download/v0.2.4/Dreame-Hub-Swift-0.2.4-preview-arm64.dmg)** · macOS 13+ · M1/M2/M3/M4 ve sonraki Apple Silicon Mac’ler. DMG’yi aç, uygulamayı Applications klasörüne sürükle, başlat ve menü çubuğundaki ikonunu kullan. Bu önizleme ad-hoc imzalıdır; Apple noter onayı yoktur. İlk açılışta Gizlilik ve Güvenlik bölümünden onay gerekebilir. Bu indirme Intel Mac’leri desteklemez. [Sürüm notları](https://github.com/retoucheroz/dreamehub/releases/tag/v0.2.4).
 
 **MOVA Home desteği (önizleme), v0.2.3'te ürün görselleriyle.** Girişte Dreame Home veya MOVA Home seçilebilir. MOVA kataloğu 22 model ailesini / 84 tam kimliği tanır ve üreticiden alınan 21 şeffaf ürün PNG'sini içerir; AI ile üretilmiş benzerleri kullanılmaz. **Entegrasyon henüz gerçek MOVA hesabı veya robotuyla doğrulanmadı:** canlı giriş, harita ve fiziksel kontroller doğrulama bekliyor. MOVA için hedefe gitme açık değildir. [MOVA ayrıntıları ve sınırlar](docs/MOVA.md).
 
@@ -46,7 +46,7 @@ Tanıtımda gerçek arayüz ve kayıtlı harita kullanılır. Robot hareketi çe
 
 Apple Silicon Mac, macOS 13 veya üzeri ve Dreame Home ya da MOVA Home hesabı gerekir. Giriş yap, robotunu seç ve menü çubuğu ikonundan Dreame Hub’ı aç. Seçilen sağlayıcı dahil hesap bilgileri macOS Anahtar Zinciri’nde kalır. Önceden kaydedilmiş Dreame hesaplarıyla uyumluluk korunur.
 
-**Dil:** arayüz Türkçe ve İngilizce olarak kullanılabilir. Varsayılan olarak macOS dilini izler (tercih edilen dillerde ilk sırada Türkçe varsa Türkçe, değilse İngilizce); Tercihler → Sistem / Türkçe / English ile değiştirilebilir.
+**Dil:** arayüz İngilizce ve Türkçe olarak kullanılabilir. Varsayılan olarak İngilizce açılır; Tercihler → Dil bölümünden Türkçe veya Sistem (macOS dilini izle) seçilebilir.
 
 Kaynaktan derlemek için uyumlu Swift araçlarını kur ve çalıştır:
 

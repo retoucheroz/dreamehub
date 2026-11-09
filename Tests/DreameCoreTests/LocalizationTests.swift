@@ -31,14 +31,18 @@ final class LocalizationTests: XCTestCase {
         XCTAssertEqual(Localization.language, "en")
         XCTAssertEqual(Localization.savedPreference, "en")
     }
-    func testInvalidChoiceFallsBackToSystem() {
-        XCTAssertEqual(Localization.resolve("de", preferred: ["tr-TR"]), "tr")
-        XCTAssertEqual(Localization.resolve("", preferred: ["en-US"]), "en")
+    func testMissingOrInvalidChoiceDefaultsToEnglish() {
+        Localization.configure(englishTable: tableURL, preference: nil)
+        XCTAssertEqual(Localization.savedPreference, "en")
+        XCTAssertEqual(Localization.language, "en")
         Localization.configure(englishTable: tableURL, preference: "de")
+        XCTAssertEqual(Localization.savedPreference, "en")
+        XCTAssertEqual(Localization.language, "en")
+    }
+    func testExplicitSystemChoiceIsKept() {
+        Localization.configure(englishTable: tableURL, preference: "system")
         XCTAssertEqual(Localization.savedPreference, "system")
         XCTAssertEqual(Localization.language, Localization.resolve("system"))
-        Localization.select(nil)
-        XCTAssertEqual(Localization.savedPreference, "system")
     }
     func testTextTranslatesAndFallsBackToTurkish() {
         Localization.configure(englishTable: tableURL, preference: "en")
